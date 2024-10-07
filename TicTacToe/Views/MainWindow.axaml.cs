@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using TicTacToe.Models;
+using TicTacToe.ViewModels;
 
 namespace TicTacToe.Views;
 
@@ -17,6 +19,9 @@ public partial class MainWindow : Window
     {
         TitleTextBlock.Text = "Game Started!";
         Buttons.ForEach(button => button.Content = "");
+        
+        var viewModel = (MainWindowViewModel)DataContext!;
+        viewModel.game = Game.NewGame(Game.Mode.Multi);
     }
 
     private void Cell_Clicked(object? sender, RoutedEventArgs e)
