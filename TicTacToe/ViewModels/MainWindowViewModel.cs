@@ -6,7 +6,6 @@ namespace TicTacToe.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
     public string Greeting => "This is a Tic-Tac-Toe Game!";
     
     private Game _game;
@@ -32,13 +31,12 @@ public partial class MainWindowViewModel : ViewModelBase
     private void MakeMove()
     {
         // Implement logic to handle the move (update _game, switch players)
-        if (_game.MakeMove((int)parameter)) // Assuming parameter is the cell index
-        {
-            _currentPlayerIndex = (_currentPlayerIndex + 1) % 2; // Switch players
-            RaisePropertyChanged(nameof(CurrentPlayerName));
-            RaisePropertyChanged(nameof(CurrentPlayerSymbol));
-        }
+        // if (_game.MakeMove((int)parameter)) // Assuming parameter is the cell index
+        // {
+        //     _currentPlayerIndex = (_currentPlayerIndex + 1) % 2; // Switch players
+        //     RaisePropertyChanged(nameof(CurrentPlayerName));
+        //     RaisePropertyChanged(nameof(CurrentPlayerSymbol));
+        // }
         // Check for win/loss/tie and update UI accordingly
     }
-#pragma warning restore CA1822 // Mark members as static
 }

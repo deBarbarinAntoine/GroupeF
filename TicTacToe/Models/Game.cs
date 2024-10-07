@@ -44,6 +44,6 @@ public class Game
 
     public bool MakeMove(int parameter)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException();    
     }
 }

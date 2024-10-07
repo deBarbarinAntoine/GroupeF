@@ -20,8 +20,8 @@ public partial class MainWindow : Window
         TitleTextBlock.Text = "Game Started!";
         Buttons.ForEach(button => button.Content = "");
         
-        var viewModel = (MainWindowViewModel)DataContext!;
-        viewModel.game = Game.NewGame(Game.Mode.Multi);
+        // var viewModel = (MainWindowViewModel)DataContext!;
+        // viewModel._game = Game.NewGame(Game.Mode.Multi);
     }
 
     private void Cell_Clicked(object? sender, RoutedEventArgs e)
