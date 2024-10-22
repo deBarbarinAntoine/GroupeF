@@ -1,1 +1,15 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Quiz Start";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="text-center">
+        <h1 class="display-4">QUIZ Khelo</h1>
+        <form asp-action="Start" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="userName" placeholder="Enter your name" required />
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg mt-3">Start</button>
+        </form>
+    </div>
+</div>

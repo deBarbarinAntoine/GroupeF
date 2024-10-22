@@ -1,1 +1,39 @@
-﻿
+﻿@model QuizApp.Models.QuizViewModel
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="card w-50">
+            <div class="card-body text-center">
+                <div class="progress-circle mx-auto mb-4" id="timer">
+                    <h2 id="time-left">30</h2>
+                </div>
+
+                <h4 class="card-title">@Model.Question.Text</h4>
+
+                <form asp-action="SubmitAnswer" method="post">
+                    @for (int i = 0; i < Model.Question.Options.Length; i++)
+                    {
+                        <div class="form-check my-2">
+                            <input type="radio" name="answer" value="@i" class="form-check-input" required />
+                            <label class="form-check-label">@Model.Question.Options[i]</label>
+                        </div>
+                    }
+                    <input type="hidden" name="correctAnswerIndex" value="@Model.Question.CorrectAnswerIndex" />
+                    <button type="submit" class="btn btn-primary mt-3 w-100">Next</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var timeLeft = 30;
+    var timer = setInterval(function() {
+        timeLeft--;
+        document.getElementById('time-left').innerText = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            alert('Time\'s up!');
+        }
+    }, 1000);
+</script>

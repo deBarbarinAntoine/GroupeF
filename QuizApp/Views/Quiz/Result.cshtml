@@ -1,1 +1,9 @@
-﻿
+﻿@model QuizApp.Models.ResultViewModel
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h2>Result</h2>
+        <p>Hey @Model.UserName, your answer is @if(Model.IsCorrect) { <strong>correct!</strong> } else { <strong>wrong!</strong> }</p>
+        <a href="/Quiz/Start" class="btn btn-success">Play Again</a>
+    </div>
+</div>
