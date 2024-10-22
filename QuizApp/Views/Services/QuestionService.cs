@@ -5,23 +5,19 @@ using System.IO;
 
 namespace QuizApp.Services
 {
-    public class QuestionService
-    {
-        private readonly string _filePath = "Data/questions.json";
-        private List<Question> _questions;
+   public class QuestionService
+{
+    private readonly string _filePath = "Data/questions.json";
+    private List<Question> _questions = new List<Question>();
 
-        public QuestionService()
+    public QuestionService()
+    {
+        if (File.Exists(_filePath))
         {
-            if (File.Exists(_filePath))
-            {
-                var json = File.ReadAllText(_filePath);
-                _questions = JsonConvert.DeserializeObject<List<Question>>(json);
-            }
-            else
-            {
-                _questions = new List<Question>();
-            }
+            var json = File.ReadAllText(_filePath);
+            _questions = JsonConvert.DeserializeObject<List<Question>>(json) ?? new List<Question>();
         }
+    }
 
         public Question GetRandomQuestion()
         {
