@@ -1,0 +1,14 @@
+@model Game
+
+@if (Model.GetState() == Game.State.Tie)
+{
+    <div>
+        <h2>You tied!</h2>
+    </div>
+}
+else if (Model.GetState() == Game.State.Win)
+{
+    <div>
+        <h2>@Model.PreviousPlayer().Name won!</h2>
+    </div>
+}

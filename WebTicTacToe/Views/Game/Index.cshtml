@@ -1,0 +1,29 @@
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
+@model WebTicTacToe.Models.GameConstructor
+@{
+    Layout = "_Layout";
+}
+
+<form asp-action="Start" asp-controller="Game">
+    
+    <div asp-validation-summary="All" class="invalid-feedback"></div>
+    
+    <p>
+        <label asp-for="PlayerName1"></label>
+        <input asp-for="PlayerName1" class="form-control" placeholder="Name...">
+        <span asp-validation-for="PlayerName1"></span>
+    </p>
+    <p>
+        <label asp-for="PlayerName2"></label>
+        <input asp-for="PlayerName2" class="form-control" placeholder="Name...">
+        <span asp-validation-for="PlayerName2"></span>
+    </p>
+    <p>
+        <label asp-for="SelectedMode"></label>
+        <input asp-for="SelectedMode"></input>
+        <span asp-validation-for="SelectedMode"></span>
+    </p>
+    <p>
+        <button type="submit">Play</button>
+    </p>
+</form>
