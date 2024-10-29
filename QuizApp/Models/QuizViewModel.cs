@@ -9,6 +9,6 @@ namespace QuizApp.Models
     public class ResultViewModel
     {
         public string UserName { get; set; }
-        public bool IsCorrect { get; set; }
+        public int Score { get; set; }
     }
 }

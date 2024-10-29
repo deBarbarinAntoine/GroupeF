@@ -7,6 +7,7 @@ namespace QuizApp.Controllers
     public class QuizController : Controller
     {
         private readonly QuestionService _questionService;
+        private int _score = 0;
 
         public QuizController()
         {
@@ -39,16 +40,14 @@ namespace QuizApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult SubmitAnswer(string answer, string correctAnswerIndex)
+        public IActionResult SubmitAnswer(string answer, int correctAnswerIndex)
         {
-            if (answer == correctAnswerIndex)
+            if (int.Parse(answer) == correctAnswerIndex)
             {
-                TempData["Correct"] = true;
+                _score++;
             }
-            else
-            {
-                TempData["Correct"] = false;
-            }
+
+            TempData["Score"] = _score;
             return RedirectToAction("Result");
         }
 
@@ -57,7 +56,7 @@ namespace QuizApp.Controllers
             var model = new ResultViewModel
             {
                 UserName = TempData["UserName"]?.ToString(),
-                IsCorrect = (bool)TempData["Correct"]
+                Score = (int)(TempData["Score"] ?? 0)
             };
             return View(model);
         }
