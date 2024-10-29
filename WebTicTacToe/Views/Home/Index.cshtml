@@ -1,0 +1,27 @@
+﻿@model WebTicTacToe.Models.GameContext
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about me: <a href="https://adebarbarin.com">Antoine de Barbarin</a>.</p>
+    
+    @if (!Model.Empty)
+    {
+        var game = Model.GetGame();
+        if (game != null)
+        {
+            <div class="board-container">
+                @if (game.IsPlaying())
+                {
+                    @await Html.PartialAsync("_Board", game)
+                }
+                else
+                {
+                    @await Html.PartialAsync("_EndGame", game)
+                }
+            </div>
+        }
+    }
+</div>
