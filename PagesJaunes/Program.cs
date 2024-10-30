@@ -1,6 +1,10 @@
-
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using PagesJaunes.Models;
+
+var root = Directory.GetCurrentDirectory();
+var dotenv = Path.Combine(root, ".env");
+DotEnv.Load(dotenv);
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    var dataSourceBuilder = new NpgsqlDataSourceBuilder($"Host={Environment.GetEnvironmentVariable("DB_HOST")};Username={Environment.GetEnvironmentVariable("DB_USER")};Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};Database={Environment.GetEnvironmentVariable("DB_NAME")};SSL Mode=Disable;Trust Server Certificate=true");
+
+    options.UseNpgsql(dataSourceBuilder.Build());
 });
 
 var app = builder.Build();
@@ -23,6 +29,9 @@ if (!app.Environment.IsDevelopment())
 else
 {
     app.UseDeveloperExceptionPage();
+    
+    // DEBUG
+    YamlDump.DumpAsYaml(Environment.GetEnvironmentVariables());
 }
 
 app.UseHttpsRedirection();

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace WebTicTacToe.Models;
@@ -6,8 +7,11 @@ public class Game
 {
     public enum Mode
     {
+        [Display(Name = "Multiplayer")]
         Multiplayer,
+        [Display(Name = "Single player")]
         SinglePlayer,
+        [Display(Name = "Spectator")]
         Spectator,
     }
 

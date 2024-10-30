@@ -1,0 +1,40 @@
+@model IEnumerable<ContactViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Contacts";
+}
+
+<h2>Contacts</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>ZipCode</th>
+        <th>Street</th>
+        <th>Working Hours</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>@contact.Id</td>
+            <td>@contact.Name</td>
+            <td>@contact.Email</td>
+            <td>@contact.Phone</td>
+            <td>@contact.Country</td>
+            <td>@contact.City</td>
+            <td>@contact.ZipCode</td>
+            <td>@contact.Street</td>
+            <td>@contact.WorkingHours</td>
+        </tr>
+    }
+    </tbody>
+</table>
