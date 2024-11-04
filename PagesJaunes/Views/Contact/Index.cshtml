@@ -7,6 +7,15 @@
 
 <h2>Contacts</h2>
 
+@if (ViewData["alert"] != null)
+{
+    <div class="alert">@ViewData["alert"]</div>
+}
+@if (ViewData["message"] != null)
+{
+<div class="alert">@ViewData["message"]</div>
+}
+
 <table class="table">
     <thead>
     <tr>
@@ -19,6 +28,7 @@
         <th>ZipCode</th>
         <th>Street</th>
         <th>Working Hours</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -34,6 +44,10 @@
             <td>@contact.ZipCode</td>
             <td>@contact.Street</td>
             <td>@contact.WorkingHours</td>
+            <td>
+                <a href="/Contact/Delete/@contact.Id">Delete</a>
+                <a href="/Contact/Edit/@contact.Id">Edit</a>
+            </td>
         </tr>
     }
     </tbody>
