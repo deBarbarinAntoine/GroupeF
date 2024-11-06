@@ -1,0 +1,31 @@
+@model ApplicationUser
+
+@{
+    ViewBag.Title = "Delete User";
+    Layout = "_Layout";
+}
+
+<h2>Delete User</h2>
+@if (ViewData["Alert"] != null) {
+<p class="alert">@ViewData["Alert"]</p>
+<form asp-action="DeleteUser">
+    <button type="submit">Delete</button>
+</form>
+}
+
+<div class="user-card d-flex flex-row">
+    <div class="label-ctn">
+        <div class="label">Username</div>
+        <div class="label">First Name</div>
+        <div class="label">Last Name</div>
+        <div class="label">Email</div>
+        <div class="label">Created at</div>
+    </div>
+    <div class="info-ctn">
+        <div class="info">@Model.UserName</div>
+        <div class="info">@Model.FirstName</div>
+        <div class="info">@Model.LastName</div>
+        <div class="info">@Model.Email</div>
+        <div class="info">@Model.CreatedDate</div>
+    </div>
+</div>

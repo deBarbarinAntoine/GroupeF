@@ -3,18 +3,30 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Contacts";
+    var searchTerm = ViewData["SearchTerm"] as string;
+    var city = ViewData["City"] as string;
 }
 
 <h2>Contacts</h2>
 
-@if (ViewData["alert"] != null)
+@if (ViewData["Alert"] != null)
 {
-    <div class="alert">@ViewData["alert"]</div>
+    <div class="alert">@ViewData["Alert"]</div>
 }
-@if (ViewData["message"] != null)
+@if (ViewData["Message"] != null)
 {
-<div class="alert">@ViewData["message"]</div>
+<div class="alert">@ViewData["Message"]</div>
 }
+<form asp-action="Search" method="get">
+    <div class="search-bar">
+        <label for="searchTerm">Search by Name:</label>
+        <input type="text" name="searchTerm" id="searchTerm" value="@searchTerm">
+
+        <label for="city">Filter by City:</label>
+        <input type="text" name="city" id="city" value="@city">
+        <button type="submit">Search</button>
+    </div>
+</form>
 
 <table class="table">
     <thead>

@@ -1,0 +1,508 @@
+[
+  {
+    "Name": "Pharmacie Lucien",
+    "Email": "pharma.lucien@wanadoo.fr",
+    "Phone": "0447828754",
+    "Country": "France",
+    "City": "Aix-en-Provence",
+    "Street": "20 avenue Gambetta",
+    "ZipCode": "13090",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "09:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "10:00:00",
+        "EndTime": "17:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Boulangerie Paul",
+    "Email": "paul.aix@ymail.com",
+    "Phone": "0442501872",
+    "Country": "France",
+    "City": "Aix-en-Provence",
+    "Street": "12 rue Espariat",
+    "ZipCode": "13100",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "07:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "07:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "07:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "07:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "07:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "08:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Epicerie Chez Marcel",
+    "Email": "epicerie.marcel@orange.fr",
+    "Phone": "0491248375",
+    "Country": "France",
+    "City": "Marseille",
+    "Street": "5 boulevard Michelet",
+    "ZipCode": "13008",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "08:00:00",
+        "EndTime": "20:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "08:00:00",
+        "EndTime": "20:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "08:00:00",
+        "EndTime": "20:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "08:00:00",
+        "EndTime": "20:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "08:00:00",
+        "EndTime": "20:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "09:00:00",
+        "EndTime": "13:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Le Comptoir Bordelais Bar Brasserie Restaurant",
+    "Email": "comptoir.bordeaux@gmail.com",
+    "Phone": "0556912345",
+    "Country": "France",
+    "City": "Bordeaux",
+    "Street": "18 rue Sainte-Catherine",
+    "ZipCode": "33000",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "10:00:00",
+        "EndTime": "18:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Le Bouchon Lyonnais Bar Brasserie",
+    "Email": "bouchon.lyon@laposte.net",
+    "Phone": "0478365412",
+    "Country": "France",
+    "City": "Lyon",
+    "Street": "5 place des Célestins",
+    "ZipCode": "69002",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "La Maison du Chocolat Chocolaterie",
+    "Email": "maison.chocolat@paris.fr",
+    "Phone": "0142603535",
+    "Country": "France",
+    "City": "Paris",
+    "Street": "22 rue du Bac",
+    "ZipCode": "75007",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "10:00:00",
+        "EndTime": "19:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "11:00:00",
+        "EndTime": "18:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Le Bistrot du Sommelier Bar Brasserie",
+    "Email": "bistrot.sommelier@bordeaux.com",
+    "Phone": "0556445566",
+    "Country": "France",
+    "City": "Bordeaux",
+    "Street": "8 rue des Trois Conils",
+    "ZipCode": "33000",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "La Brasserie Lipp",
+    "Email": "brasserie.lipp@paris.fr",
+    "Phone": "0142611111",
+    "Country": "France",
+    "City": "Paris",
+    "Street": "151 Boulevard Saint-Germain",
+    "ZipCode": "75006",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "12:00:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Le Café de la Gare",
+    "Email": "cafe.gare@lyon.fr",
+    "Phone": "0472418282",
+    "Country": "France",
+    "City": "Lyon",
+    "Street": "Place de la Gare",
+    "ZipCode": "69002",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "07:00:00",
+        "EndTime": "22:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "07:00:00",
+        "EndTime": "22:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "07:00:00",
+        "EndTime": "22:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "07:00:00",
+        "EndTime": "22:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "07:00:00",
+        "EndTime": "23:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "08:00:00",
+        "EndTime": "23:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "08:00:00",
+        "EndTime": "22:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Le Petit Nice Bar Brasserie",
+    "Email": "petit.nice@marseille.fr",
+    "Phone": "0491543090",
+    "Country": "France",
+    "City": "Marseille",
+    "Street": "38 Boulevard du Littoral",
+    "ZipCode": "13008",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "La Table de Franck Pumelat Restaurant",
+    "Email": "table.pumelat@montpellier.fr",
+    "Phone": "0467662266",
+    "Country": "France",
+    "City": "Montpellier",
+    "Street": "17 rue du Pila Saint-Gély",
+    "ZipCode": "34000",
+    "WorkingHours": [
+      {
+        "Day": 1,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 2,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 3,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 4,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 5,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 6,
+        "StartTime": "12:00:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Day": 0,
+        "StartTime": "00:00:00",
+        "EndTime": "00:00:00"
+      }
+    ]
+  }
+]

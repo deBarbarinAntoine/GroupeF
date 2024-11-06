@@ -9,5 +9,5 @@ public class CreateContactViewModel
     public string City { get; set; }
     public string Street { get; set; }
     public string ZipCode { get; set; }
-    public List<string> WorkingHours { get; set; } = new(7);
+    public List<WorkingHours> WorkingHours { get; set; } = new(7);
 }
