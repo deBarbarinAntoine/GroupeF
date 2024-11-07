@@ -8,7 +8,7 @@ public class SeedData
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly string _adminEmail;
     private readonly string _adminPassword;
-    private readonly List<CreateContactViewModel> _contacts;
+    private readonly List<MigrateContactViewModel> _contacts;
 
     public SeedData(UserManager<ApplicationUser> userManager)
     {
@@ -28,7 +28,7 @@ public class SeedData
                 PropertyNameCaseInsensitive = true
             };
 
-            _contacts = JsonSerializer.Deserialize<List<CreateContactViewModel>>(jsonString, options);
+            _contacts = JsonSerializer.Deserialize<List<MigrateContactViewModel>>(jsonString, options);
         }
     }
 
@@ -62,18 +62,18 @@ public class SeedData
 
         if (!context.Contacts.Any())
         {
-            foreach (var contactViewModel in _contacts)
+            foreach (var migrateContact in _contacts)
             {
                 var contact = new Contact
                 {
-                    Name = contactViewModel.Name,
-                    Email = contactViewModel.Email,
-                    Phone = contactViewModel.Phone,
-                    Country = contactViewModel.Country,
-                    ZipCode = contactViewModel.ZipCode,
-                    City = contactViewModel.City,
-                    Street = contactViewModel.Street,
-                    WorkingHours = ContactViewModel.ParseToList(contactViewModel.WorkingHours)
+                    Name = migrateContact.Name,
+                    Email = migrateContact.Email,
+                    Phone = migrateContact.Phone,
+                    Country = migrateContact.Country,
+                    ZipCode = migrateContact.ZipCode,
+                    City = migrateContact.City,
+                    Street = migrateContact.Street,
+                    WorkingHours = ContactViewModel.ParseToList(MigrateWorkingHours.ToWorkingHours(migrateContact.WorkingHours)),
                 };
 
                 context.Contacts.Add(contact);

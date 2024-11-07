@@ -30,6 +30,21 @@
         <div class="info">@Model.ZipCode</div>
         <div class="info">@Model.City</div>
         <div class="info">@Model.Street</div>
-        <div class="info">@Model.WorkingHours</div>
+        <div class="info">
+            @foreach (var workingHour in Model.ParseToWorkingHours())
+            {
+                <div class="working-hour">
+                    <span>@workingHour.Day.ToString():</span>
+                    @if (workingHour.StartTime == workingHour.EndTime)
+                    {
+                        <span>Closed</span>
+                    }
+                    else
+                    {
+                        <span>from @workingHour.StartTime to @workingHour.EndTime</span>
+                    }
+                </div>
+            }
+        </div>
     </div>
 </div>

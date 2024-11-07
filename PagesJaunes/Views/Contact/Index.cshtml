@@ -27,40 +27,57 @@
         <button type="submit">Search</button>
     </div>
 </form>
+<div class="main-section">
+    <div class="list-contacts">
+        <div class="title-tags">
+            <div class="title-tag flex-4">Name</div>
+            <div class="title-tag flex-3">Email</div>
+            <div class="title-tag flex-1">Phone</div>
+            <div class="title-tag flex-1">Country</div>
+            <div class="title-tag flex-1">City</div>
+            <div class="title-tag flex-1">ZipCode</div>
+            <div class="title-tag flex-2">Street</div>
+            <div class="title-tag flex-1">Status</div>
+            <div class="title-tag flex-1">Actions</div>
+        </div>
+        <div class="separator"></div>
+        <div class="list-ctn">
+            @foreach (var contact in Model)
+            {
+            <div class="list-row position-relative">
+                <a asp-controller="Contact" asp-action="View" asp-route-id="@contact.Id" class="full-link"></a>
+                <div class="list-cell flex-4">@contact.Name</div>
+                <div class="list-cell flex-3">@contact.Email</div>
+                <div class="list-cell flex-1">@contact.Phone</div>
+                <div class="list-cell flex-1">@contact.Country</div>
+                <div class="list-cell flex-1">@contact.City</div>
+                <div class="list-cell flex-1">@contact.ZipCode</div>
+                <div class="list-cell flex-2">@contact.Street</div>
+                <div class="list-cell flex-1">@contact.GetCurrentState()</div>
+                <div class="list-cell flex-1">
+                    <a asp-controller="Contact" asp-action="Delete" asp-route-id="@contact.Id" class="z-index-1000">Delete</a>
+                    <a asp-controller="Contact" asp-action="Edit" asp-route-id="@contact.Id" class="z-index-1000">Edit</a>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Country</th>
-        <th>City</th>
-        <th>ZipCode</th>
-        <th>Street</th>
-        <th>Working Hours</th>
-        <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var contact in Model)
-    {
-        <tr>
-            <td>@contact.Id</td>
-            <td>@contact.Name</td>
-            <td>@contact.Email</td>
-            <td>@contact.Phone</td>
-            <td>@contact.Country</td>
-            <td>@contact.City</td>
-            <td>@contact.ZipCode</td>
-            <td>@contact.Street</td>
-            <td>@contact.WorkingHours</td>
-            <td>
-                <a href="/Contact/Delete/@contact.Id">Delete</a>
-                <a href="/Contact/Edit/@contact.Id">Edit</a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+
+@if (!Model.Any())
+{
+    <div class="alert">
+        <span>Nothing found</span>
+        @if (!string.IsNullOrEmpty(searchTerm))
+        {
+            <span>for @searchTerm</span>
+        }
+
+        @if (!string.IsNullOrEmpty(city))
+        {
+            <span>in @city</span>
+        }
+
+    </div>
+}

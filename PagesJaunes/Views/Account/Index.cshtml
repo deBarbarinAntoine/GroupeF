@@ -7,19 +7,19 @@
 
 <h2>Dashboard</h2>
 
-@if (ViewData["Message"] != null)
+@if (TempData["Message"] is not null)
 {
-    <div class="alert">@ViewData["Message"]</div>
+<div class="alert">@TempData["Message"]</div>
 }
-@if (ViewData["Alert"] != null)
+@if (TempData["Alert"] is not null)
 {
-    <div class="alert">@ViewData["Alert"]</div>
+<div class="alert">@TempData["Alert"]</div>
 }
 
 <div class="user-actions-ctn">
     <span class="text-center">Welcome @Model.FirstName @Model.LastName!</span>
     <a asp-controller="Account" asp-action="ListUsers">Manage Users</a>
-    <a asp-controller="CreateContact" asp-action="Create">New User</a>
+    <a asp-controller="Account" asp-action="Create">New User</a>
     <form asp-action="Logout">
         <button type="submit">Logout</button>
     </form>

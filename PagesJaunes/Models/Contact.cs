@@ -57,4 +57,9 @@ public class Contact
         ZipCode = zipCode;
         WorkingHours = workingHours;
     }
+
+    public List<WorkingHours> ParseToWorkingHours()
+    {
+        return ContactViewModel.ParseToWorkingHours(WorkingHours);
+    }
 }

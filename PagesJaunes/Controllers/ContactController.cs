@@ -68,12 +68,14 @@ public class ContactController : Controller
     }
 
     [HttpGet, Route("/Contact/View/{id}")]
-    public async Task<IActionResult> View(int id)
+    public async Task<IActionResult> View(long id)
     {
         var contact = await _context.Contacts.FindAsync(id);
 
         if (contact != null)
+        {
             return View("Contact", contact);
+        }
 
         ViewData["Alert"] = "Contact not found!";
         return Redirect($"/Contact/Index/");
@@ -108,6 +110,8 @@ public class ContactController : Controller
             WorkingHours = ContactViewModel.ParseToWorkingHours(contact.WorkingHours),
         };
 
+        viewModel.SetStaticWorkingHours();
+
         return View(viewModel);
     }
 
@@ -131,6 +135,8 @@ public class ContactController : Controller
                     ViewData["Alert"] = "Contact not found!";
                     return Redirect($"/Contact/Index/");
                 }
+
+                model.SetWorkingHours();
 
                 contact.Name = model.Name;
                 contact.Email = model.Email;
@@ -181,7 +187,6 @@ public class ContactController : Controller
         }
 
         ViewData["Alert"] = "Are you sure you want to delete this contact?";
-
         return View("Contact", contact);
     }
 

@@ -17,7 +17,7 @@ public class CreateContactController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        return View("Create");
+        return View(CreateContactViewModel.Empty());
     }
 
     [HttpPost]
@@ -26,6 +26,7 @@ public class CreateContactController : Controller
     {
         if (ModelState.IsValid)
         {
+            model.SetWorkingHours();
             var contact = new Contact
             {
                 Name = model.Name,

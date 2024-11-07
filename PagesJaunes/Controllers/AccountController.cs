@@ -41,7 +41,8 @@ public class AccountController : Controller
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index");
+                var user = await _userManager.GetUserAsync(User);
+                return RedirectToAction("Index", user);
             }
             else
             {
@@ -72,8 +73,8 @@ public class AccountController : Controller
             return View(userViewModels);
         }
 
-        ViewData["Alert"] = "You're not allowed to manage users!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to manage users!";
+        return RedirectToAction("Index", user);
     }
 
     [HttpGet]
@@ -85,8 +86,8 @@ public class AccountController : Controller
             return View(model);
         }
 
-        ViewData["Alert"] = "You're not allowed to create a new user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to create a new user!";
+        return RedirectToAction("Index", user);
     }
 
     [Authorize]
@@ -107,6 +108,7 @@ public class AccountController : Controller
 
                 var user = new ApplicationUser
                 {
+                    UserName = model.Email,
                     Email = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
@@ -117,8 +119,8 @@ public class AccountController : Controller
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    ViewData["Message"] = "User created successfully!";
-                    return RedirectToAction("Index");
+                    TempData["Message"] = "User created successfully!";
+                    return RedirectToAction("Index", currentUser);
                 }
                 else
                 {
@@ -129,8 +131,8 @@ public class AccountController : Controller
             return View("Create", model);
         }
 
-        ViewData["Alert"] = "You're not allowed to create a new user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to create a new user!";
+        return RedirectToAction("Index", currentUser);
     }
 
     [HttpGet, Authorize]
@@ -144,12 +146,12 @@ public class AccountController : Controller
             {
                 View(user);
             }
-            ViewData["Alert"] = $"User {id} does not exist!";
-            return RedirectToAction("ListUsers");
+            TempData["Alert"] = $"User {id} does not exist!";
+            return RedirectToAction("ListUsers", currentUser);
         }
 
-        ViewData["Alert"] = "You're not allowed to delete a user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to delete a user!";
+        return RedirectToAction("Index", currentUser);
     }
 
     [HttpPost, Authorize]
@@ -164,22 +166,22 @@ public class AccountController : Controller
                 var result = await _userManager.DeleteAsync(user);
                 if (result.Succeeded)
                 {
-                    ViewData["Message"] = $"User {user.FirstName} {user.LastName} was successfully deleted!";
-                    return RedirectToAction("ListUsers");
+                    TempData["Message"] = $"User {user.FirstName} {user.LastName} was successfully deleted!";
+                    return RedirectToAction("ListUsers", currentUser);
                 }
                 else
                 {
                     Console.WriteLine($"Error deleting user: {result.Errors}");
-                    ViewData["Alert"] = $"An error occurred while attempting to delete user {user.FirstName} {user.LastName}!";
-                    return RedirectToAction("ListUsers");
+                    TempData["Alert"] = $"An error occurred while attempting to delete user {user.FirstName} {user.LastName}!";
+                    return RedirectToAction("ListUsers", currentUser);
                 }
             }
-            ViewData["Alert"] = $"User {user.FirstName} {user.LastName} does not exist!";
-            return RedirectToAction("ListUsers");
+            TempData["Alert"] = $"User {user.FirstName} {user.LastName} does not exist!";
+            return RedirectToAction("ListUsers", currentUser);
         }
 
-        ViewData["Alert"] = "You're not allowed to delete a user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to delete a user!";
+        return RedirectToAction("Index", currentUser);
     }
 
     [HttpGet, Authorize]
@@ -191,8 +193,8 @@ public class AccountController : Controller
             var user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
-                ViewData["Alert"] = $"User {id} does not exist!";
-                return RedirectToAction("ListUsers");
+                TempData["Alert"] = $"User {id} does not exist!";
+                return RedirectToAction("ListUsers", currentUser);
             }
 
             var viewModel = new EditUserViewModel
@@ -207,8 +209,8 @@ public class AccountController : Controller
             return View(viewModel);
         }
 
-        ViewData["Alert"] = "You're not allowed to edit a user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to edit a user!";
+        return RedirectToAction("Index", currentUser);
     }
 
     [HttpPost, Authorize]
@@ -231,14 +233,14 @@ public class AccountController : Controller
                     var result = await _userManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
-                        ViewData["Message"] = $"User {user.FirstName} {user.LastName} updated successfully!";
-                        return RedirectToAction("ListUsers");
+                        TempData["Message"] = $"User {user.FirstName} {user.LastName} updated successfully!";
+                        return RedirectToAction("ListUsers", currentUser);
                     }
                     else
                     {
                         Console.WriteLine($"Error updating user {user.Id}: {result.Errors}");
-                        ViewData["Alert"] = $"An error occurred while attempting to update user {user.FirstName} {user.LastName}!";
-                        return RedirectToAction("ListUsers");
+                        TempData["Alert"] = $"An error occurred while attempting to update user {user.FirstName} {user.LastName}!";
+                        return RedirectToAction("ListUsers", currentUser);
                     }
                 }
             }
@@ -246,8 +248,8 @@ public class AccountController : Controller
             return View(model);
         }
 
-        ViewData["Alert"] = "You're not allowed to edit a user!";
-        return RedirectToAction("Index");
+        TempData["Alert"] = "You're not allowed to edit a user!";
+        return RedirectToAction("Index", currentUser);
     }
 
     [HttpPost]
@@ -256,7 +258,7 @@ public class AccountController : Controller
     {
         await _signInManager.SignOutAsync();
 
-        ViewData["Message"] = "Logout Successful!";
+        TempData["Message"] = "Logout Successful!";
         return RedirectToAction("Index", "Home");
     }
 }
