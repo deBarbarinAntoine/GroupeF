@@ -12,6 +12,29 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4 p-5 mb-5">Search for a business near you!</h1>
+
+
+    <div class="h-25rem relative p-5 display-flex justify-content-center align-items-center border-radius overflow-hidden huge-shadow">
+
+        @* Background image *@
+        <div class="abs-background">
+            <img class="bg-img" src="~/img/search-img.jpg" alt="search image" />
+        </div>
+
+        @* Search form *@
+        <form class="search-form" asp-controller="Contact" asp-action="Search" method="get">
+            <div class="search-bar">
+
+                <label for="searchTerm"></label>
+                <input class="search-input small-shadow" type="text" name="searchTerm" id="searchTerm" placeholder="Search...">
+
+                <label for="city"></label>
+                <input class="search-input small-shadow" type="text" name="city" id="city" placeholder="Where...">
+
+                <button class="button yellow small-shadow" type="submit">Search</button>
+            </div>
+        </form>
+
+    </div>
 </div>

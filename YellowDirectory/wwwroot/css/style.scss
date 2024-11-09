@@ -33,12 +33,12 @@ $white: #F9F7F7;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: calc(7px + .4rem);
+  font-size: calc(10px + 0.4rem);
 }
 
 @media (max-width: 768px) {
   * {
-    font-size: calc(8px + .4rem);
+    font-size: calc(11px + 0.4rem);
   }
 }
 
@@ -48,12 +48,56 @@ $white: #F9F7F7;
 
 html {
   position: relative;
-  min-height: 100%;
+  min-height: 100dvh;
+  font-size: calc(7px + 0.4rem);
 }
 
 body {
-  margin-bottom: 60px;
   background-color: $lightgrey;
+  font-size: 1.2rem;
+}
+
+footer {
+  margin-bottom: 60px;
+
+  .container {
+    font-size: 1.1rem;
+
+    a {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.container:has(main) {
+  min-height: 87dvh;
+}
+
+.container-space-between {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.abs-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.h-25rem {
+  height: 25rem;
+}
+
+.bg-img {
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
 }
 
 .bg-blue {
@@ -62,6 +106,10 @@ body {
 
 .bg-yellow {
   background-color: $yellow;
+}
+
+.display-flex {
+  display: flex;
 }
 
 .relative {
@@ -94,6 +142,58 @@ body {
 
 .huge-shadow {
   box-shadow: $darkshadow 0 .5rem 2.2rem;
+}
+
+.border-radius {
+  border-radius: .7rem;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+}
+
+.admin-nav-link {
+  width: 1.4rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+
+  .icon {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    fill: $darkblue;
+    transition: all 200ms ease-in 50ms;
+  }
+  &:hover .icon {
+    fill: $blue;
+  }
+  .stroke-icon {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+
+    path {
+      stroke: $darkblue;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  &:hover .stroke-icon path{
+    stroke: $blue;
+  }
 }
 
 .separator {
@@ -181,17 +281,36 @@ button,
   }
 }
 
+.alert {
+  display: flex;
+  justify-content: center;
+  gap: .5ch;
+  align-self: center;
+  padding: 1.5rem 3rem;
+  border: $orange 2px solid;
+  border-radius: .5rem;
+  background-color: $cream;
+  color: $darkblue;
+
+  span {
+    color: $darkblue;
+  }
+}
+
 //############################################################################################
 //#                                    SEARCH CONTACTS                                       #
 //############################################################################################
 
 .search-form {
+  width: 100%;
   display: flex;
+  justify-content: center;
   padding: 3rem 0;
 
   .search-bar {
-    width: 90vw;
+    width: 90%;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 2rem;
 
@@ -199,7 +318,7 @@ button,
       flex: 1;
       appearance: none;
       border: $mediumblue 2px solid;
-      background: none;
+      background-color: $white;
       outline: none;
       color: $darkblue;
       font-weight: 600;
@@ -212,7 +331,7 @@ button,
         outline: $orange 2px solid;
         appearance: none;
         border: none;
-        background: none;
+        background-color: $white;
       }
     }
   }
@@ -245,10 +364,11 @@ button,
     width: 70vw;
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     gap: 1rem;
 
     .contact-card {
-      width: clamp(250px, calc(8vw + 15rem), 45rem);
+      width: clamp(350px, calc(8vw + 15rem), 45rem);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -294,41 +414,6 @@ button,
             }
           }
         }
-        .contact-element {
-          display: flex;
-          gap: 1.5rem;
-
-          .icon {
-            width: 1.7rem;
-            fill: $orange;
-          }
-          .contact-email-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-          }
-          .contact-phone-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-          }
-          .contact-country-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-          }
-          .contact-address-text {
-            display: flex;
-            flex-direction: column;
-            gap: .4rem;
-
-            .street {
-              font-size: 1.2rem;
-              font-weight: 600;
-            }
-            .zipcode-city {
-              font-size: 1.2rem;
-              font-weight: 600;
-            }
-          }
-        }
       }
       .bottom-card {
         display: flex;
@@ -342,42 +427,144 @@ button,
           justify-content: space-between;
           align-items: center;
           padding: .7rem 0;
-
-          .contact-status {
-            display: flex;
-            gap: 1rem;
-            padding: .4rem .8rem;
-            border-radius: .7rem;
-
-            &:has(.open) {
-                background-color: transparentize($deepgreen, 0.6);
-                .icon {
-                  fill: $darkblue;
-                }
-            }
-            &:has(.closed) {
-                background-color: transparentize($darkred, 0.6);
-              .icon {
-                fill: $darkblue;
-              }
-            }
-            .icon {
-              width: 1.7rem;
-            }
-            .contact-status-text {
-              font-size: 1.2rem;
-
-              &.open {
-                color: $darkblue;
-              }
-              &.closed {
-                color: $darkblue;
-              }
-            }
-          }
         }
       }
     }
   }
 }
+
+.contact-element {
+  display: flex;
+  gap: 1.5rem;
+
+  .icon {
+    width: 1.7rem;
+    fill: $orange;
+  }
+  .contact-email-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .contact-phone-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .contact-country-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .contact-address-text {
+    display: flex;
+    flex-direction: column;
+    gap: .4rem;
+
+    .street {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .zipcode-city {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.contact-status {
+  display: flex;
+  gap: 1rem;
+  padding: .4rem .8rem;
+  border-radius: .7rem;
+  width: fit-content;
+
+  &:has(.open) {
+    background-color: transparentize($deepgreen, 0.6);
+    .icon {
+      fill: $darkblue;
+    }
+  }
+  &:has(.closed) {
+    background-color: transparentize($darkred, 0.6);
+    .icon {
+      fill: $darkblue;
+    }
+  }
+  .icon {
+    width: 1.7rem;
+  }
+  .contact-status-text {
+    font-size: 1.2rem;
+
+    &.open {
+      color: $darkblue;
+    }
+    &.closed {
+      color: $darkblue;
+    }
+  }
+}
+
+//############################################################################################
+//#                                     CONTACT PAGE                                         #
+//############################################################################################
+
+.contact-page-ctn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+
+  .contact-info {
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-radius: .7rem;
+    background-color: $white;
+  }
+  .contact-working-hours {
+    width: 42%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 2rem 4rem;
+    gap: 1.5rem;
+    border-radius: .7rem;
+    background-color: $white;
+
+    .head-line {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .title-text {
+        flex: 1;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: $darkblue;
+      }
+    }
+    .day-line {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .text-line {
+        flex: 1;
+        font-size: 1.2rem;
+        color: $darkblue;
+      }
+      .closed-line {
+        flex: 2;
+        font-size: 1.2rem;
+        color: $darkred;
+      }
+    }
+  }
+}
+
+//############################################################################################
+//#                                      HOME PAGE                                           #
+//############################################################################################
 

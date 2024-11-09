@@ -20,12 +20,19 @@ public class AccountController : Controller
     [HttpGet, Authorize]
     public IActionResult Index(ApplicationUser user)
     {
+
+        TempData["IsAuthenticated"] = true;
+
         return View(user);
     }
 
     [HttpGet]
-    public IActionResult Login()
+    public async Task<IActionResult> Login()
     {
+        var user = await _userManager.GetUserAsync(User);
+        if (user is not null)
+            return RedirectToAction("Index", user);
+
         return View();
     }
 
@@ -33,6 +40,10 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser is not null)
+            return RedirectToAction("Index", currentUser);
+
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
@@ -57,6 +68,7 @@ public class AccountController : Controller
     public async Task<IActionResult> ListUsers()
     {
         var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
         if (user is not null && user.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             var users = await _userManager.Users.ToListAsync();
@@ -95,6 +107,7 @@ public class AccountController : Controller
     public async Task<IActionResult> CreateUser(CreateUserViewModel model)
     {
         var currentUser = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             if (ModelState.IsValid)
@@ -139,6 +152,7 @@ public class AccountController : Controller
     public async Task<IActionResult> Delete(string id)
     {
         var currentUser = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -158,6 +172,7 @@ public class AccountController : Controller
     public async Task<IActionResult> DeleteUser(string id)
     {
         var currentUser = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -188,6 +203,7 @@ public class AccountController : Controller
     public async Task<IActionResult> EditUser(string id)
     {
         var currentUser = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             var user = await _userManager.FindByIdAsync(id);
@@ -218,6 +234,7 @@ public class AccountController : Controller
     public async Task<IActionResult> EditUser(EditUserViewModel model)
     {
         var currentUser = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
             if (ModelState.IsValid)

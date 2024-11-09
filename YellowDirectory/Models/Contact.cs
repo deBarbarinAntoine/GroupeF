@@ -62,4 +62,22 @@ public class Contact
     {
         return ContactViewModel.ParseToWorkingHours(WorkingHours);
     }
+
+    public string GetCurrentStatus()
+    {
+
+        var currentTime = DateTime.Now;
+
+        foreach (var workingHour in ParseToWorkingHours().Where(workingHour => workingHour.Day == currentTime.DayOfWeek))
+        {
+            if (workingHour.StartTime < currentTime.TimeOfDay && currentTime.TimeOfDay < workingHour.EndTime)
+            {
+                if (workingHour.EndTime - currentTime.TimeOfDay >= TimeSpan.FromHours(1))
+                    return $"Open till {workingHour.EndTime.Hours:00}:{workingHour.EndTime.Minutes:00}";
+                var timeLeft = workingHour.EndTime - currentTime.TimeOfDay;
+                return $"Closes in {timeLeft.Minutes} minutes";
+            }
+        }
+        return "Closed";
+    }
 }

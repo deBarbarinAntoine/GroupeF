@@ -79,6 +79,9 @@ public class ContactController : Controller
     [HttpGet, Route("/Contact/View/{id}")]
     public async Task<IActionResult> View(long id)
     {
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         var contact = await _context.Contacts.FindAsync(id);
 
         if (contact != null)
@@ -93,6 +96,9 @@ public class ContactController : Controller
     [HttpGet, Route("/Contact/Edit/{id}"), Authorize]
     public async Task<IActionResult> Edit(long? id)
     {
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         if (id == null)
         {
             TempData["Alert"] = "Contact not found!";
@@ -128,6 +134,9 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(long id, ContactViewModel model)
     {
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         if (id != model.Id)
         {
             TempData["Alert"] = "Contact not found!";
@@ -187,6 +196,9 @@ public class ContactController : Controller
     [HttpGet, Route("Contact/Delete/{id}"), Authorize]
     public async Task<IActionResult> Delete(long id)
     {
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         Console.WriteLine($"Deleting contact {id}");
         var contact = await _context.Contacts.FindAsync(id);
         if (contact == null)
@@ -203,6 +215,9 @@ public class ContactController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(long id)
     {
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         var contact = await _context.Contacts.FindAsync(id);
         if (contact == null)
         {

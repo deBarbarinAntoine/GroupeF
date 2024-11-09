@@ -159,11 +159,12 @@
         <span>Nothing found</span>
         @if (!string.IsNullOrEmpty(searchTerm))
         {
-            <span>for @searchTerm</span>
+            <span>for </span><span class="fw-bold">@searchTerm</span>
         }
         @if (!string.IsNullOrEmpty(city))
         {
-            <span>in @city</span>
+            <span>in </span><span class="fw-bold">@city</span>
         }
+        <span>!</span>
     </div>
 }

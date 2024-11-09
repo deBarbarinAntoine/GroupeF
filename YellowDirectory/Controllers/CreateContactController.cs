@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using YellowDirectory.Models;
 
@@ -8,15 +9,21 @@ namespace YellowDirectory.Controllers;
 public class CreateContactController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public CreateContactController(ApplicationDbContext context)
+    public CreateContactController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     [HttpGet]
-    public IActionResult Create()
+    public async Task<IActionResult> Create()
     {
+
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
+
         return View(CreateContactViewModel.Empty());
     }
 
@@ -44,6 +51,9 @@ public class CreateContactController : Controller
 
             return RedirectToAction("Index", "Contact");
         }
+
+        var user = await _userManager.GetUserAsync(User);
+        TempData["IsAuthenticated"] = user is not null;
 
         return View(model);
     }
