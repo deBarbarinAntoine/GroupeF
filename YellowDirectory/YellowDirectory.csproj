@@ -18,4 +18,35 @@
       <PackageReference Include="YamlDotNet" Version="16.1.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\CreateUser\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-eye-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-house-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-key-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-lens-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-pencil-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-pin-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\alt-trash-bin-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\at-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\calendar-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\exclamation-round-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\eye-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\lens-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\lock-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\logout-line-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\logout-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\member-card-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\out-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\pencil-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\phone-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\pin-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\round-plus-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\square-pencil-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\tick-checkbox-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\time-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\trash-bin-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\unlock-svgrepo-com.svg" />
+      <_ContentIncludedByDefault Remove="wwwroot\icons\user-circle-svgrepo-com.svg" />
+    </ItemGroup>
+
 </Project>

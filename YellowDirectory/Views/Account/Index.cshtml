@@ -3,9 +3,10 @@
 @{
     ViewBag.Title = "Dashboard";
     Layout = "_Layout";
+    var isAdmin = TempData["IsAdmin"] as bool? ?? false;
 }
 
-<h2>Dashboard</h2>
+<h2 class="align-self-center text-center p-5">Dashboard</h2>
 
 @if (TempData["Message"] is not null)
 {
@@ -16,11 +17,30 @@
 <div class="alert">@TempData["Alert"]</div>
 }
 
-<div class="user-actions-ctn">
-    <span class="text-center">Welcome @Model.FirstName @Model.LastName!</span>
-    <a asp-controller="Account" asp-action="ListUsers">Manage Users</a>
-    <a asp-controller="Account" asp-action="Create">New User</a>
-    <form asp-action="Logout">
-        <button type="submit">Logout</button>
-    </form>
+<div class="dashboard-ctn">
+
+    <div class="dashboard-info-ctn small-shadow">
+        <div class="labels">
+            <div class="label-text">Name:</div>
+            <div class="label-text">Email:</div>
+            <div class="label-text">Created at:</div>
+        </div>
+        <div class="info">
+            <div class="info-text">@Model.FirstName @Model.LastName</div>
+            <div class="info-text">@Model.Email</div>
+            <div class="info-text">@($"{Model.CreatedDate:dddd, MMMM d, yyyy}") </div>
+        </div>
+    </div>
+
+    <div class="dashboard-actions-ctn">
+        @if (isAdmin)
+        {
+            <a class="button yellow small-shadow w-100" asp-controller="Account" asp-action="ListUsers">Manage Users</a>
+            <a class="button yellow small-shadow w-100" asp-controller="Account" asp-action="Create">New User</a>
+        }
+        <form class="w-100" asp-action="Logout">
+            <button class="button red small-shadow w-100" type="submit">Logout</button>
+        </form>
+    </div>
+
 </div>

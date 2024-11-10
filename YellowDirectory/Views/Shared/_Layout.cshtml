@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="~/YellowDirectory.styles.css" asp-append-version="true"/>
 </head>
 <body>
+
+<div class="abs-background">
+    <img class="bg-img bg-hue-rotate" src="~/img/light-yellow-abstact-bg.jpg" alt="background image"/>
+</div>
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-yellow border-bottom box-shadow mb-3">
         <div class="container-space-between">
@@ -36,39 +41,39 @@
             <div class="navbar-right">
 
                 @{
-                var isAuthenticated = TempData["IsAuthenticated"] as bool? ?? false;
+                    var isAuthenticated = TempData["IsAuthenticated"] as bool? ?? false;
                 }
 
                 @* Admin Actions *@
                 @if (isAuthenticated)
                 {
-                // Dashboard
-                <div class="admin-nav-link relative">
-                    <a class="abs full" asp-controller="Account" asp-action="Index"></a>
-                    <svg class="icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <title>Home</title>
-                        <path d="M0 14.016l2.016 1.984h4v14.016q0 0.832 0.576 1.408t1.408 0.576h4v-12q0-0.832 0.576-1.408t1.44-0.576h4q0.8 0 1.408 0.576t0.576 1.408v12h4q0.832 0 1.408-0.576t0.608-1.408v-14.016h4l1.984-1.984-16-14.016z"></path>
-                    </svg>
-                </div>
+                    // Dashboard
+                    <div class="admin-nav-link relative">
+                        <a class="abs full" asp-controller="Account" asp-action="Index"></a>
+                        <svg class="icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <title>Home</title>
+                            <path d="M0 14.016l2.016 1.984h4v14.016q0 0.832 0.576 1.408t1.408 0.576h4v-12q0-0.832 0.576-1.408t1.44-0.576h4q0.8 0 1.408 0.576t0.576 1.408v12h4q0.832 0 1.408-0.576t0.608-1.408v-14.016h4l1.984-1.984-16-14.016z"></path>
+                        </svg>
+                    </div>
 
-                // Logout
-                <div id="nav-logout-ctn" class="admin-nav-link relative">
-                    <form asp-controller="Account" asp-action="Logout">
-                        <button id="logout-btn" class="d-none" type="submit"></button>
-                    </form>
-                    <svg class="stroke-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H15" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M19 12L15 8M19 12L15 16M19 12H9" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
-                </div>
+                    // Logout
+                    <div id="nav-logout-ctn" class="admin-nav-link relative">
+                        <form asp-controller="Account" asp-action="Logout">
+                            <button id="logout-btn" class="d-none" type="submit"></button>
+                        </form>
+                        <svg class="stroke-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H15" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M19 12L15 8M19 12L15 16M19 12H9" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                    </div>
                 }
                 else
                 {
-                // Login
-                <div class="admin-nav-link relative">
-                    <a class="abs full" asp-controller="Account" asp-action="Login"></a>
-                    <svg class="icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <title>Login</title>
-                        <path d="M0 10.016q0 2.016 0.8 3.872t2.144 3.2 3.168 2.112 3.904 0.8q2.048 0 4-0.832v2.848h4v1.984h4v4h4v4h5.984v-8l-9.984-8v-1.984h-2.848q0.832-1.952 0.832-4t-0.8-3.872-2.112-3.2-3.2-2.144-3.872-0.8q-2.72 0-5.024 1.344t-3.648 3.648-1.344 5.024zM4 8q0-1.632 1.184-2.816t2.816-1.184 2.816 1.184 1.184 2.816-1.184 2.848-2.816 1.152-2.816-1.152-1.184-2.848z"></path>
-                    </svg>
-                </div>
+                    // Login
+                    <div class="admin-nav-link relative">
+                        <a class="abs full" asp-controller="Account" asp-action="Login"></a>
+                        <svg class="icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                            <title>Login</title>
+                            <path d="M0 10.016q0 2.016 0.8 3.872t2.144 3.2 3.168 2.112 3.904 0.8q2.048 0 4-0.832v2.848h4v1.984h4v4h4v4h5.984v-8l-9.984-8v-1.984h-2.848q0.832-1.952 0.832-4t-0.8-3.872-2.112-3.2-3.2-2.144-3.872-0.8q-2.72 0-5.024 1.344t-3.648 3.648-1.344 5.024zM4 8q0-1.632 1.184-2.816t2.816-1.184 2.816 1.184 1.184 2.816-1.184 2.848-2.816 1.152-2.816-1.152-1.184-2.848z"></path>
+                        </svg>
+                    </div>
                 }
             </div>
         </div>

@@ -18,9 +18,16 @@ public class AccountController : Controller
     }
 
     [HttpGet, Authorize]
-    public IActionResult Index(ApplicationUser user)
+    public async Task<IActionResult> Index(ApplicationUser user)
     {
+        user = await _userManager.GetUserAsync(User);
+        if (user is null)
+        {
+            // Handle case where user is not logged in (optional)
+            return RedirectToAction("Login");
+        }
 
+        TempData["IsAdmin"] = user.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL");
         TempData["IsAuthenticated"] = true;
 
         return View(user);
@@ -48,11 +55,10 @@ public class AccountController : Controller
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
 
-            YamlDump.DumpAsYaml(result);
-
             if (result.Succeeded)
             {
                 var user = await _userManager.GetUserAsync(User);
+                TempData["Message"] = $"Welcome {user.FirstName} {user.LastName}!";
                 return RedirectToAction("Index", user);
             }
             else
@@ -90,12 +96,12 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Create(CreateUserViewModel model)
+    public async Task<IActionResult> Create()
     {
         var user = await _userManager.GetUserAsync(User);
         if (user is not null && user.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
-            return View(model);
+            return View();
         }
 
         TempData["Alert"] = "You're not allowed to create a new user!";
@@ -116,7 +122,6 @@ public class AccountController : Controller
                 {
                     ModelState.AddModelError("ConfirmPassword", "Passwords do not match.");
                     return View("Create", model);
-
                 }
 
                 var user = new ApplicationUser
@@ -155,10 +160,22 @@ public class AccountController : Controller
         TempData["IsAuthenticated"] = currentUser is not null;
         if (currentUser is not null && currentUser.Email == Environment.GetEnvironmentVariable("ADMIN_EMAIL"))
         {
+
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
-                View(user);
+                var viewModel = new UserViewModel
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    CreatedDate = user.CreatedDate
+                };
+
+                TempData["Alert"] = $"Do you want to delete user {id}?";
+                return View(viewModel);
             }
             TempData["Alert"] = $"User {id} does not exist!";
             return RedirectToAction("ListUsers", currentUser);

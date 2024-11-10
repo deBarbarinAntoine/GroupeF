@@ -1,0 +1,53 @@
+@model UserViewModel
+
+<div class="user-card small-shadow">
+
+    <div class="user-admin-actions">
+
+        @* Delete *@
+        <div class="admin-action-ctn relative">
+            <a asp-controller="Account" asp-action="Delete" asp-route-id="@Model.Id" class="abs full"></a>
+            <svg class="icon red" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>Delete</title>
+                <path d="M2.016 8q0 0.832 0.576 1.44t1.408 0.576v16q0 2.496 1.76 4.224t4.256 1.76h12q2.464 0 4.224-1.76t1.76-4.224v-16q0.832 0 1.408-0.576t0.608-1.44-0.608-1.408-1.408-0.576h-5.984q0-2.496-1.792-4.256t-4.224-1.76q-2.496 0-4.256 1.76t-1.728 4.256h-6.016q-0.832 0-1.408 0.576t-0.576 1.408zM8 26.016v-16h16v16q0 0.832-0.576 1.408t-1.408 0.576h-12q-0.832 0-1.44-0.576t-0.576-1.408zM12 23.008q0 0.416 0.288 0.704t0.704 0.288 0.704-0.288 0.32-0.704v-8q0-0.416-0.32-0.704t-0.704-0.288-0.704 0.288-0.288 0.704v8zM14.016 6.016q0-0.832 0.576-1.408t1.408-0.608 1.408 0.608 0.608 1.408h-4zM18.016 23.008q0 0.416 0.288 0.704t0.704 0.288 0.704-0.288 0.288-0.704v-8q0-0.416-0.288-0.704t-0.704-0.288-0.704 0.288-0.288 0.704v8z"></path>
+            </svg>
+        </div>
+
+        @* Edit *@
+        <div class="admin-action-ctn relative">
+            <a asp-controller="Account" asp-action="EditUser" asp-route-id="@Model.Id" class="abs full"></a>
+            <svg class="icon green" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>Edit</title>
+                <path d="M0 26.016v-20q0-2.496 1.76-4.256t4.256-1.76h12.32l-4 4h-8.32q-0.832 0-1.44 0.608t-0.576 1.408v20q0 0.832 0.576 1.408t1.44 0.576h20q0.8 0 1.408-0.576t0.576-1.408v-8.352l4-4v12.352q0 2.496-1.76 4.224t-4.224 1.76h-20q-2.496 0-4.256-1.76t-1.76-4.224zM6.016 26.016l4-12 13.984-14.016 8 8-13.984 14.016zM10.016 22.016l5.984-2.016-4-4zM14.016 14.016l4 4 5.984-6.016-4-4z"></path>
+            </svg>
+        </div>
+
+    </div>
+
+
+    <div class="user-info-ctn">
+
+        <div class="labels">
+            <div class="label-text">Id</div>
+            <div class="label-text">Username</div>
+            <div class="label-text">First name</div>
+            <div class="label-text">Last name</div>
+            <div class="label-text">Email</div>
+            <div class="label-text">Created at</div>
+        </div>
+
+        @{
+            var lastName = String.IsNullOrEmpty(Model.LastName) ? "N/A" : Model.LastName;
+        }
+
+        <div class="info">
+            <div class="info-text">@Model.Id</div>
+            <div class="info-text">@Model.UserName</div>
+            <div class="info-text">@Model.FirstName</div>
+            <div class="info-text">@lastName</div>
+            <div class="info-text">@Model.Email</div>
+            <div class="info-text">@($"{Model.CreatedDate:dddd, MMMM d, yyyy}") </div>
+        </div>
+
+    </div>
+</div>
