@@ -1,5 +1,9 @@
 namespace YellowDirectory.Models;
 
+/// <summary>
+/// WorkingHours is the model associated to all ContactViewModels
+/// for the WorkingHours attribute (business weekly schedule)
+/// </summary>
 public class WorkingHours
 {
     public DayOfWeek Day { get; }
@@ -8,6 +12,13 @@ public class WorkingHours
     public string StartTimeString { get; }
     public string EndTimeString { get; }
 
+    /// <summary>
+    /// Basic WorkingHours constructor taking TimeStamp-parsed strings
+    /// for the opening and closing hours.
+    /// </summary>
+    /// <param name="day">the day of the week</param>
+    /// <param name="startTimeString">the opening time in 'HH:mm:ss' format</param>
+    /// <param name="endTimeString">the closing time in 'HH:mm:ss' format</param>
     public WorkingHours(DayOfWeek day, string startTimeString, string endTimeString)
     {
         Day = day;
@@ -31,6 +42,13 @@ public class WorkingHours
         }
     }
 
+    /// <summary>
+    /// Static small factory that creates a list of WorkingHours
+    /// with the same startTime and endTime each day of the week.
+    /// </summary>
+    /// <param name="startTime">the daily opening time.</param>
+    /// <param name="endTime">the daily closing time.</param>
+    /// <returns>the list of WorkingHours.</returns>
     public static List<WorkingHours> NewList(TimeSpan startTime, TimeSpan endTime)
     {
         List<WorkingHours> workingHours = [];
@@ -45,6 +63,15 @@ public class WorkingHours
         return workingHours;
     }
 
+    /// <summary>
+    /// Static function that parses a string representing a day of the week
+    /// into the corresponding entry in the DayOfWeek enum.
+    /// </summary>
+    /// <param name="day">the string representing a day of the week.</param>
+    /// <returns>the corresponding DayOfWeek entry.</returns>
+    /// <exception cref="InvalidDataException">
+    /// when the string representing the day doesn't match any entry of the DayOfWeek enum.
+    /// </exception>
     public static DayOfWeek ParseToDayOfWeek(string day)
     {
         if (Enum.IsDefined(typeof(DayOfWeek), day))
@@ -55,6 +82,11 @@ public class WorkingHours
         throw new InvalidDataException($"Invalid data: {day}");
     }
 
+    /// <summary>
+    /// ToString implementation to convert the WorkingHours
+    /// to a simple CSV string used in the database.
+    /// </summary>
+    /// <returns>the string representing the WorkingHours in the CSV format</returns>
     public override string ToString()
     {
         return Day + "," + StartTime + "," + EndTime;

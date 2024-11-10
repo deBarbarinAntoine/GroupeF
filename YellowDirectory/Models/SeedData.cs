@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Identity;
 
 namespace YellowDirectory.Models;
 
+/// <summary>
+/// SeedData is the model managing the migrations when launching the web server.
+/// </summary>
 public class SeedData
 {
     private readonly UserManager<ApplicationUser> _userManager;
@@ -10,6 +13,11 @@ public class SeedData
     private readonly string _adminPassword;
     private readonly List<MigrateContactViewModel> _contacts;
 
+    /// <summary>
+    /// Basic constructor that takes the admin credentials from the environment variables
+    /// and fetch the MigrateContactViewModels from the JSON file specified in the environment variables.
+    /// </summary>
+    /// <param name="userManager">the userManager of the application</param>
     public SeedData(UserManager<ApplicationUser> userManager)
     {
         _userManager = userManager;
@@ -32,6 +40,10 @@ public class SeedData
         }
     }
 
+    /// <summary>
+    /// Runs the migrations if necessary.
+    /// </summary>
+    /// <param name="context">the context from which run the migrations.</param>
     public async Task SeedAsync(ApplicationDbContext context)
     {
         if (!context.Users.Any(u => u.Email == _adminEmail))

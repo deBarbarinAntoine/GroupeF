@@ -5,6 +5,9 @@ using YellowDirectory.Models;
 
 namespace YellowDirectory.Controllers;
 
+/// <summary>
+/// HomeController manages all basic routes.
+/// </summary>
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -16,6 +19,10 @@ public class HomeController : Controller
         _userManager = userManager;
     }
 
+    /// <summary>
+    /// Index route
+    /// </summary>
+    /// <returns>the index view</returns>
     public async Task<IActionResult> Index()
     {
 
@@ -25,6 +32,10 @@ public class HomeController : Controller
         return View();
     }
 
+    /// <summary>
+    /// Privacy policy route
+    /// </summary>
+    /// <returns>the privacy policy view</returns>
     public async Task<IActionResult> Privacy()
     {
 
@@ -34,6 +45,10 @@ public class HomeController : Controller
         return View();
     }
 
+    /// <summary>
+    /// Error route
+    /// </summary>
+    /// <returns>the error view</returns>
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public async Task<IActionResult> Error()
     {

@@ -1,14 +1,17 @@
 namespace YellowDirectory.Models;
 
+/// <summary>
+/// MigrateContactViewModel is the Contact model associated to the migrations.
+/// </summary>
 public class MigrateContactViewModel
 {
-    public string Name { get; set; }
-    public string Email { get; set; }
-    public string Phone { get; set; }
-    public string Country { get; set; }
-    public string City { get; set; }
-    public string Street { get; set; }
-    public string ZipCode { get; set; }
-    public List<MigrateWorkingHours> WorkingHours { get; set; } = new(7);
+    public string? Name { get; init; }
+    public string? Email { get; init; }
+    public string? Phone { get; init; }
+    public string? Country { get; init; }
+    public string? City { get; init; }
+    public string? Street { get; init; }
+    public string? ZipCode { get; init; }
+    public List<MigrateWorkingHours> WorkingHours { get; init; } = new(7);
 
 }

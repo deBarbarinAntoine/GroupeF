@@ -6,6 +6,10 @@ using YellowDirectory.Models;
 
 namespace YellowDirectory.Controllers;
 
+/// <summary>
+/// AccountController manages all routes regarding the user:
+/// Login, Logout, Dashboard, Manage users, Edit user, Delete user...
+/// </summary>
 public class AccountController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;
@@ -17,6 +21,11 @@ public class AccountController : Controller
         _signInManager = signInManager;
     }
 
+    /// <summary>
+    /// User Dashboard route
+    /// </summary>
+    /// <param name="user">the currently connected user</param>
+    /// <returns>the dashboard view</returns>
     [HttpGet, Authorize]
     public async Task<IActionResult> Index(ApplicationUser user)
     {
@@ -33,6 +42,10 @@ public class AccountController : Controller
         return View(user);
     }
 
+    /// <summary>
+    /// Login route
+    /// </summary>
+    /// <returns>the login view</returns>
     [HttpGet]
     public async Task<IActionResult> Login()
     {
@@ -43,6 +56,11 @@ public class AccountController : Controller
         return View();
     }
 
+    /// <summary>
+    /// Login treatment route
+    /// </summary>
+    /// <param name="model">the user credentials</param>
+    /// <returns>redirect to the user dashboard route</returns>
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
@@ -70,6 +88,10 @@ public class AccountController : Controller
         return View(model);
     }
 
+    /// <summary>
+    /// Manage users route
+    /// </summary>
+    /// <returns>the manage users page with the list of existing users</returns>
     [HttpGet, Authorize]
     public async Task<IActionResult> ListUsers()
     {
@@ -95,6 +117,10 @@ public class AccountController : Controller
         return RedirectToAction("Index", user);
     }
 
+    /// <summary>
+    /// Create user route
+    /// </summary>
+    /// <returns>the create user view</returns>
     [HttpGet]
     public async Task<IActionResult> Create()
     {
@@ -108,6 +134,11 @@ public class AccountController : Controller
         return RedirectToAction("Index", user);
     }
 
+    /// <summary>
+    /// Create user treatment route
+    /// </summary>
+    /// <param name="model">the user to create</param>
+    /// <returns>redirect to the user dashboard route</returns>
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateUser(CreateUserViewModel model)
@@ -153,6 +184,11 @@ public class AccountController : Controller
         return RedirectToAction("Index", currentUser);
     }
 
+    /// <summary>
+    /// Delete user route
+    /// </summary>
+    /// <param name="id">the id of the user to delete</param>
+    /// <returns>the delete user view</returns>
     [HttpGet, Authorize]
     public async Task<IActionResult> Delete(string id)
     {
@@ -185,6 +221,11 @@ public class AccountController : Controller
         return RedirectToAction("Index", currentUser);
     }
 
+    /// <summary>
+    /// Delete user treatment route
+    /// </summary>
+    /// <param name="id">the id of the user to delete</param>
+    /// <returns>redirect to the manage users route</returns>
     [HttpPost, Authorize]
     public async Task<IActionResult> DeleteUser(string id)
     {
@@ -208,7 +249,7 @@ public class AccountController : Controller
                     return RedirectToAction("ListUsers", currentUser);
                 }
             }
-            TempData["Alert"] = $"User {user.FirstName} {user.LastName} does not exist!";
+            TempData["Alert"] = $"User {id} does not exist!";
             return RedirectToAction("ListUsers", currentUser);
         }
 
@@ -216,6 +257,11 @@ public class AccountController : Controller
         return RedirectToAction("Index", currentUser);
     }
 
+    /// <summary>
+    /// Edit user route
+    /// </summary>
+    /// <param name="id">the id of the user to edit</param>
+    /// <returns>the edit user view</returns>
     [HttpGet, Authorize]
     public async Task<IActionResult> EditUser(string id)
     {
@@ -246,6 +292,11 @@ public class AccountController : Controller
         return RedirectToAction("Index", currentUser);
     }
 
+    /// <summary>
+    /// Edit user treatment route
+    /// </summary>
+    /// <param name="model">the updated user</param>
+    /// <returns>redirect to the manage users route</returns>
     [HttpPost, Authorize]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> EditUser(EditUserViewModel model)
@@ -286,6 +337,10 @@ public class AccountController : Controller
         return RedirectToAction("Index", currentUser);
     }
 
+    /// <summary>
+    /// Logout route
+    /// </summary>
+    /// <returns>redirect to the landing page</returns>
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()

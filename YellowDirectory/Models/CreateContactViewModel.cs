@@ -1,5 +1,8 @@
 namespace YellowDirectory.Models;
 
+/// <summary>
+/// CreateContactViewModel is the Contact model associated to CreateView.
+/// </summary>
 public class CreateContactViewModel
 {
     public string Name { get; set; }
@@ -25,6 +28,10 @@ public class CreateContactViewModel
     public string SundayStartTime { get; set; }
     public string SundayEndTime { get; set; }
 
+    /// <summary>
+    /// Static small factory that creates an empty CreateContactViewModel with default WorkingHours.
+    /// </summary>
+    /// <returns>the CreateContactViewModel</returns>
     public static CreateContactViewModel Empty()
     {
         var viewModel = new CreateContactViewModel();
@@ -60,6 +67,9 @@ public class CreateContactViewModel
         return viewModel;
     }
 
+    /// <summary>
+    /// Sets the WorkingHours attribute according to the multiple StartTime and EndTime attributes.
+    /// </summary>
     public void SetWorkingHours()
     {
         WorkingHours.Add(new WorkingHours(DayOfWeek.Monday, MondayStartTime, MondayEndTime));

@@ -5,6 +5,9 @@ using YellowDirectory.Models;
 
 namespace YellowDirectory.Controllers;
 
+/// <summary>
+/// CreateContactController manages the CreateContact route.
+/// </summary>
 [Authorize]
 public class CreateContactController : Controller
 {
@@ -17,6 +20,10 @@ public class CreateContactController : Controller
         _userManager = userManager;
     }
 
+    /// <summary>
+    /// Create contact route
+    /// </summary>
+    /// <returns>the create view</returns>
     [HttpGet]
     public async Task<IActionResult> Create()
     {
@@ -27,6 +34,11 @@ public class CreateContactController : Controller
         return View(CreateContactViewModel.Empty());
     }
 
+    /// <summary>
+    /// Create contact treatment route
+    /// </summary>
+    /// <param name="model">the contact to create</param>
+    /// <returns>redirect to the Contact/Index view</returns>
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateContactViewModel model)

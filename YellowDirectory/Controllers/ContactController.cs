@@ -6,6 +6,9 @@ using YellowDirectory.Models;
 
 namespace YellowDirectory.Controllers;
 
+/// <summary>
+/// ContactController manages all routes regarding the contacts, except the CreateContact route.
+/// </summary>
 public class ContactController : Controller
 {
     private readonly ApplicationDbContext _context;
@@ -17,6 +20,10 @@ public class ContactController : Controller
         _userManager = userManager;
     }
 
+    /// <summary>
+    /// Index/default route
+    /// </summary>
+    /// <returns>the index view</returns>
     public async Task<IActionResult> Index()
     {
         var contacts = await _context.Contacts.ToListAsync();
@@ -39,7 +46,13 @@ public class ContactController : Controller
         return View("Index", contactViewModels);
     }
 
-    public async Task<IActionResult> Search(string searchTerm, string city = null)
+    /// <summary>
+    /// Search contact route
+    /// </summary>
+    /// <param name="searchTerm">the name to search</param>
+    /// <param name="city">the city to filter the search</param>
+    /// <returns>the index view with the results of the search</returns>
+    public async Task<IActionResult> Search(string? searchTerm, string? city = null)
     {
         var query = _context.Contacts.AsQueryable();
 
@@ -76,6 +89,11 @@ public class ContactController : Controller
         return View("Index", contactViewModels);
     }
 
+    /// <summary>
+    /// View contact route
+    /// </summary>
+    /// <param name="id">the id of the contact to display</param>
+    /// <returns>the contact view</returns>
     [HttpGet, Route("/Contact/View/{id}")]
     public async Task<IActionResult> View(long id)
     {
@@ -93,6 +111,11 @@ public class ContactController : Controller
         return Redirect($"/Contact/Index/");
     }
 
+    /// <summary>
+    /// Edit contact route
+    /// </summary>
+    /// <param name="id">the id of the contact to edit</param>
+    /// <returns>the edit view</returns>
     [HttpGet, Route("/Contact/Edit/{id}"), Authorize]
     public async Task<IActionResult> Edit(long? id)
     {
@@ -130,6 +153,12 @@ public class ContactController : Controller
         return View(viewModel);
     }
 
+    /// <summary>
+    /// Edit contact treatment route
+    /// </summary>
+    /// <param name="id">the id of the contact to edit</param>
+    /// <param name="model">the updated contact</param>
+    /// <returns>redirect to the contact view of the updated contact</returns>
     [HttpPost, ActionName("Edit"), Route("/Contact/Edit/{id}"), Authorize]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(long id, ContactViewModel model)
@@ -188,11 +217,21 @@ public class ContactController : Controller
         return Redirect($"Contact/View/{model.Id}");
     }
 
+    /// <summary>
+    /// Checks if a contact exists
+    /// </summary>
+    /// <param name="id">the id of the contact</param>
+    /// <returns>True if it exists, False otherwise</returns>
     private bool ContactExists(long id)
     {
         return _context.Contacts.Any(e => e.Id == id);
     }
 
+    /// <summary>
+    /// Delete contact route
+    /// </summary>
+    /// <param name="id">the id of the contact to delete</param>
+    /// <returns>the contact view with a form to confirm the deletion</returns>
     [HttpGet, Route("Contact/Delete/{id}"), Authorize]
     public async Task<IActionResult> Delete(long id)
     {
@@ -211,6 +250,11 @@ public class ContactController : Controller
         return View("Contact", contact);
     }
 
+    /// <summary>
+    /// Delete contact treatment route
+    /// </summary>
+    /// <param name="id">the id of the contact to delete</param>
+    /// <returns>redirect to the index view</returns>
     [HttpPost, ActionName("Delete"), Route("Contact/Delete/{id}"), Authorize]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(long id)
