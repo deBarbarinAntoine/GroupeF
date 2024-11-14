@@ -1,0 +1,56 @@
+@model CreateUserViewModel
+
+@{
+    ViewBag.Title = "Create User";
+    Layout = "_Layout";
+}
+
+<h2 class="align-self-center text-center p-5">Create User</h2>
+
+<form class="w-100 m-auto display-flex flex-column align-items-center gap-5" asp-controller="Account" asp-action="CreateUser">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="user-form small-shadow">
+        <div class="form-line">
+            <label asp-for="FirstName" class="user-form-label">First name</label>
+            <div class="form-group">
+                <input asp-for="FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-line">
+            <label asp-for="LastName" class="user-form-label">Last name</label>
+            <div class="form-group">
+                <input asp-for="LastName" class="form-control"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-line">
+            <label asp-for="Email" class="user-form-label"></label>
+            <div class="form-group">
+                <input asp-for="Email" class="form-control"/>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-line">
+            <label asp-for="Password" class="user-form-label"></label>
+            <div class="form-group">
+                <input asp-for="Password" type="password" class="form-control"/>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-line">
+            <label asp-for="ConfirmPassword" class="user-form-label">Confirmation</label>
+            <div class="form-group">
+                <input asp-for="ConfirmPassword" type="password" class="form-control"/>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="user-form-buttons">
+        <a asp-controller="Account" asp-action="Index" class="button red small-shadow">Return</a>
+        <button type="submit" class="button yellow small-shadow">Create</button>
+    </div>
+</form>

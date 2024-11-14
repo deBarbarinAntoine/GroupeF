@@ -1,0 +1,131 @@
+@model ContactViewModel
+
+@{
+    ViewData["Title"] = "Create Contact";
+    Layout = "_Layout";
+}
+
+<h2 class="align-self-center text-center p-5"><span class="fw-bold fs-2">Editing: </span><span class="fst-italic fs-2">@Model.Name</span></h2>
+
+<form class="w-100 m-auto display-flex flex-column align-items-center gap-5" asp-action="Edit">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" name="Id" value="@Model.Id"/>
+
+    <div class="contact-form-ctn small-shadow">
+        <div class="contact-form-generic-ctn">
+            <div class="form-line">
+                <label asp-for="Name" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="Email" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="Email" class="form-control"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="Phone" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="Phone" class="form-control"/>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="Country" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="Country" class="form-control"/>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="City" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="City" class="form-control"/>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="ZipCode" class="contact-form-label">ZIP Code</label>
+                <div class="form-group">
+                    <input asp-for="ZipCode" class="form-control"/>
+                    <span asp-validation-for="ZipCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-line">
+                <label asp-for="Street" class="contact-form-label"></label>
+                <div class="form-group">
+                    <input asp-for="Street" class="form-control"/>
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-working-hours-ctn">
+            <div class="form-group">
+                <div class="working-hours-container">
+
+                    <div class="header-form-container">
+                        <div class="header-label">Day</div>
+                        <div class="header-label">Opening</div>
+                        <div class="header-label">Closing</div>
+                    </div>
+
+                    <div class="h-separator w-100"></div>
+
+                    <div class="working-hour">
+                        <label>Monday</label>
+                        <input asp-for="MondayStartTime" value="@Model.MondayStartTime" type="time"/>
+                        <input asp-for="MondayEndTime" value="@Model.MondayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Tuesday</label>
+                        <input asp-for="TuesdayStartTime" value="@Model.TuesdayStartTime" type="time"/>
+                        <input asp-for="TuesdayEndTime" value="@Model.TuesdayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Wednesday</label>
+                        <input asp-for="WednesdayStartTime" value="@Model.WednesdayStartTime" type="time"/>
+                        <input asp-for="WednesdayEndTime" value="@Model.WednesdayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Thursday</label>
+                        <input asp-for="ThursdayStartTime" value="@Model.ThursdayStartTime" type="time"/>
+                        <input asp-for="ThursdayEndTime" value="@Model.ThursdayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Friday</label>
+                        <input asp-for="FridayStartTime" value="@Model.FridayStartTime" type="time"/>
+                        <input asp-for="FridayEndTime" value="@Model.FridayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Saturday</label>
+                        <input asp-for="SaturdayStartTime" value="@Model.SaturdayStartTime" type="time"/>
+                        <input asp-for="SaturdayEndTime" value="@Model.SaturdayEndTime" type="time"/>
+                    </div>
+                    <div class="working-hour">
+                        <label>Sunday</label>
+                        <input asp-for="SundayStartTime" value="@Model.SundayStartTime" type="time"/>
+                        <input asp-for="SundayEndTime" value="@Model.SundayEndTime" type="time"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contact-form-buttons">
+        <a asp-controller="Contact" asp-action="Index" class="button red small-shadow">Return</a>
+        <button type="submit" class="button yellow small-shadow">Edit</button>
+    </div>
+</form>

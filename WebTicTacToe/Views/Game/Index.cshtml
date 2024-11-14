@@ -20,7 +20,7 @@
     </p>
     <p>
         <label asp-for="SelectedMode"></label>
-        <input asp-for="SelectedMode"></input>
+        <select asp-for="SelectedMode" asp-items="Html.GetEnumSelectList<Game.Mode>()"></select>
         <span asp-validation-for="SelectedMode"></span>
     </p>
     <p>

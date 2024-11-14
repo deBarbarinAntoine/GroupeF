@@ -6,6 +6,7 @@
     {
         <h2>@Model.Question.Text</h2>
         <form asp-action="SubmitAnswer" asp-controller="Quiz" method="post">
+            @Html.AntiForgeryToken()
             @for (int i = 0; i < Model.Question.Options.Length; i++)
             {
                 <button type="submit" name="answerIndex" value="@i" class="btn btn-option mt-2 w-100">
@@ -14,6 +15,7 @@
             }
         </form>
         <form asp-action="Quit" asp-controller="Quiz" method="post">
+            @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-quit mt-3 w-100">Quitter</button>
         </form>
     }

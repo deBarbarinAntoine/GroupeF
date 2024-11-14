@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json; // Ajoutez ce namespace pour la sérialisation
+using Newtonsoft.Json;
 using QuizApp.Models;
 using QuizApp.Services;
 
@@ -74,7 +74,7 @@ namespace QuizApp.Controllers
                     }
 
                     TempData["Score"] = score;
-                    TempData["LastQuestion"] = JsonConvert.SerializeObject(question); // Serialize pour TempData
+                    TempData["LastQuestion"] = JsonConvert.SerializeObject(question);
                     TempData["LastAnswerIndex"] = answerIndex;
                 }
             }
@@ -82,35 +82,36 @@ namespace QuizApp.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
         public IActionResult Quit()
         {
             return RedirectToAction("Result");
         }
 
-public IActionResult Result()
-{
-    TempData.Keep();
+        [HttpGet]
+        public IActionResult Result()
+        {
+            TempData.Keep();
 
-    Question? lastQuestion = null;
-    if (TempData["LastQuestion"] != null && TempData["LastQuestion"] is string lastQuestionJson && !string.IsNullOrEmpty(lastQuestionJson))
-    {
-        lastQuestion = JsonConvert.DeserializeObject<Question>(lastQuestionJson);
-    }
+            Question? lastQuestion = null;
+            if (TempData["LastQuestion"] != null && TempData["LastQuestion"] is string lastQuestionJson && !string.IsNullOrEmpty(lastQuestionJson))
+            {
+                lastQuestion = JsonConvert.DeserializeObject<Question>(lastQuestionJson);
+            }
 
-    var lastAnswerIndex = (int?)TempData["LastAnswerIndex"];
-    var score = (int)(TempData["Score"] ?? 0);
+            var lastAnswerIndex = (int?)TempData["LastAnswerIndex"];
+            var score = (int)(TempData["Score"] ?? 0);
 
-    var model = new ResultViewModel
-    {
-        UserName = TempData["UserName"]?.ToString() ?? "Unknown",
-        Score = score
-    };
+            var model = new ResultViewModel
+            {
+                UserName = TempData["UserName"]?.ToString() ?? "Unknown",
+                Score = score
+            };
 
-    ViewBag.LastQuestion = lastQuestion;
-    ViewBag.LastAnswerIndex = lastAnswerIndex;
+            ViewBag.LastQuestion = lastQuestion;
+            ViewBag.LastAnswerIndex = lastAnswerIndex;
 
-    return View(model);
-}
-
+            return View(model);
+        }
     }
 }

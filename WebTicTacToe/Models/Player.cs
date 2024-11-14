@@ -47,7 +47,7 @@ public class Player
             if (board.CheckCell(i))
                 results.Add(new Tuple<int, int>(i, board.EvaluateCell(i, Symbol)));
         }
-        results.Sort((it1, it2) => it2.Item2 - it1.Item2);
+        results.Sort((it1, it2) => it1.Item2 - it2.Item2);
         
         return results;
     }

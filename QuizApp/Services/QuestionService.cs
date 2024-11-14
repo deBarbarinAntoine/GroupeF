@@ -23,15 +23,9 @@ namespace QuizApp.Services
             }
         }
 
-        public Question GetRandomQuestion()
-        {
-            var random = new Random();
-            return _questions[random.Next(_questions.Count)];
-        }
-
         public List<Question> GetAllQuestions()
         {
-            return new List<Question>(_questions); // Retourner une copie pour éviter la modification
+            return new List<Question>(_questions); // Copie pour éviter la modification
         }
     }
 }

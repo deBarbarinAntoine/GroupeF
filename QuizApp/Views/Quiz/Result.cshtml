@@ -7,7 +7,9 @@
     @if (ViewBag.LastQuestion != null && ViewBag.LastQuestion is Question lastQuestion)
     {
         <p>Dernière question : @lastQuestion.Text</p>
-        <p>Votre réponse : @(ViewBag.LastAnswerIndex != null ? lastQuestion.Options.ElementAtOrDefault((int)ViewBag.LastAnswerIndex) ?? "Non répondu" : "Non répondu")</p>
+        <p>Votre réponse : @(ViewBag.LastAnswerIndex != null 
+            ? lastQuestion.Options.ElementAtOrDefault((int)ViewBag.LastAnswerIndex) ?? "Non répondu" 
+            : "Non répondu")</p>
         <p>Bonne réponse : @(lastQuestion.Options.ElementAtOrDefault(lastQuestion.CorrectAnswerIndex) ?? "Non défini")</p>
     }
     else
