@@ -1,8 +1,8 @@
 namespace QuizApp.Models
 {
-    public class QuizViewModel
+    public class ResultViewModel
     {
-        public Question Question { get; set; } = new Question();
         public string UserName { get; set; } = string.Empty;
+        public int Score { get; set; }
     }
 }

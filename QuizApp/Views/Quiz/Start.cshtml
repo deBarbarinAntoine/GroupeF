@@ -1,15 +1,8 @@
-﻿@{
-    ViewData["Title"] = "Quiz Start";
-}
-
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="text-center">
-        <h1 class="display-4">QUIZ - Qui veut gagner des millions</h1>
-        <form asp-action="Start" method="post">
-            <div class="form-group">
-                <input type="text" class="form-control" name="userName" placeholder="Enter your name" required />
-            </div>
-            <button type="submit" class="btn btn-warning btn-lg mt-3">Start</button>
-        </form>
-    </div>
+﻿@* Start.cshtml *@
+<div class="container text-center mt-5">
+    <h1>Bienvenue au Quiz</h1>
+    <form asp-action="Start" method="post">
+        <input type="text" name="userName" placeholder="Entrez votre nom" required class="form-control mb-3">
+        <button type="submit" class="btn btn-primary">Commencer</button>
+    </form>
 </div>

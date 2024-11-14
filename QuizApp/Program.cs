@@ -2,11 +2,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Ajouter les services au conteneur
 builder.Services.AddControllersWithViews();
-builder.Services.AddSession(); // Ajouter le service de session
+builder.Services.AddSession();
 
 var app = builder.Build();
 
-// Configurer le pipeline de requête HTTP
+// Configurer le pipeline HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -17,7 +17,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseSession(); // Activer les sessions dans le pipeline
+app.UseSession();
 
 app.UseAuthorization();
 
@@ -25,11 +25,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Quiz}/{action=Start}/{id?}");
 
-// Ajouter un message personnalisé pour l'URL de démarrage
-Console.WriteLine("=======================================");
-Console.WriteLine("Application démarrée !");
-Console.WriteLine("Veuillez utiliser ce lien pour accéder à l'application :");
-Console.WriteLine("https://localhost:7041/Quiz/Start");
-Console.WriteLine("=======================================");
-
+Console.WriteLine("Application démarrée sur : https://localhost:7041/Quiz/Start");
 app.Run();

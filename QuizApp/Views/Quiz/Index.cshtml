@@ -1,23 +1,59 @@
-﻿@model QuizApp.Models.QuizViewModel
+﻿@using QuizApp.Models
+@model QuizApp.Models.QuizViewModel
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="card w-50">
-            <div class="card-body text-center">
-                <h4 class="card-title">@Model.Question.Text</h4>
-
-                <form asp-action="SubmitAnswer" method="post">
-                    @for (int i = 0; i < Model.Question.Options.Length; i++)
-                    {
-                        <div class="form-check my-2">
-                            <input type="radio" name="answer" value="@i" class="form-check-input" required />
-                            <label class="form-check-label">@Model.Question.Options[i]</label>
-                        </div>
-                    }
-                    <input type="hidden" name="correctAnswerIndex" value="@Model.Question.CorrectAnswerIndex" />
-                    <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
-                </form>
-            </div>
-        </div>
-    </div>
+<div class="container text-center mt-5">
+    @if (Model.Question != null)
+    {
+        <h2>@Model.Question.Text</h2>
+        <form asp-action="SubmitAnswer" asp-controller="Quiz" method="post">
+            @for (int i = 0; i < Model.Question.Options.Length; i++)
+            {
+                <button type="submit" name="answerIndex" value="@i" class="btn btn-option mt-2 w-100">
+                    @Model.Question.Options[i]
+                </button>
+            }
+        </form>
+        <form asp-action="Quit" asp-controller="Quiz" method="post">
+            <button type="submit" class="btn btn-quit mt-3 w-100">Quitter</button>
+        </form>
+    }
+    else
+    {
+        <p>Question non disponible.</p>
+    }
 </div>
+
+<style>
+    .btn-option {
+        background-color: #ffffff;
+        color: #2e7d32;
+        border: 2px solid #2e7d32;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-option:hover {
+        background-color: #2e7d32;
+        color: #ffffff;
+    }
+
+    .btn-quit {
+        background-color: #ff4d4d;
+        color: #ffffff;
+        border: 2px solid #ff4d4d;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-quit:hover {
+        background-color: #d43f3f;
+    }
+</style>
