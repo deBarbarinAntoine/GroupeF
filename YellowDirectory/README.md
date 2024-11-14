@@ -5,11 +5,18 @@
 ## Index
 
 1. [Presentation](#presentation)
-2. [Overview](#overview)
-3. [Configuration](#configuration)
+2. [Live Preview](#live-preview)
+3. [Overview](#overview)
+4. [Configuration](#configuration)
    1. [Requirements](#requirements)
    2. [Dependencies](#dependencies)
    3. [Installation](#installation)
+
+---
+
+## Live Preview
+
+If you just wish to see the `live preview`, follow this link: [Yellow Directory Live Preview](https://yellow-directory.adebarbarin.com).
 
 ---
 
