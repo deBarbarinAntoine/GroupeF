@@ -1,28 +1,16 @@
-﻿@using QuizApp.Models
-@model QuizApp.Models.QuizViewModel
+﻿@model SimpleQuizApp.Models.QuizViewModel
 
 <div class="container text-center mt-5">
-    @if (Model.Question != null)
-    {
-        <h2>@Model.Question.Text</h2>
-        <form asp-action="SubmitAnswer" asp-controller="Quiz" method="post">
-            @Html.AntiForgeryToken()
-            @for (int i = 0; i < Model.Question.Options.Length; i++)
-            {
-                <button type="submit" name="answerIndex" value="@i" class="btn btn-option mt-2 w-100">
-                    @Model.Question.Options[i]
-                </button>
-            }
-        </form>
-        <form asp-action="Quit" asp-controller="Quiz" method="post">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-quit mt-3 w-100">Quitter</button>
-        </form>
-    }
-    else
-    {
-        <p>Question non disponible.</p>
-    }
+    <h2>@Model.Question.Text</h2>
+    <form asp-action="SubmitAnswer" method="post">
+        @for (int i = 0; i < Model.Question.Options.Length; i++)
+        {
+            <button type="submit" name="answerIndex" value="@i" class="btn btn-option mt-2 w-100">
+                @Model.Question.Options[i]
+            </button>
+        }
+    </form>
+    <p class="mt-3">Question @Model.CurrentQuestionIndex sur @Model.TotalQuestions</p>
 </div>
 
 <style>
@@ -32,30 +20,11 @@
         border: 2px solid #2e7d32;
         padding: 10px 15px;
         font-size: 16px;
-        border-radius: 5px;
-        text-align: center;
         cursor: pointer;
         transition: background-color 0.3s, color 0.3s;
     }
-
     .btn-option:hover {
         background-color: #2e7d32;
         color: #ffffff;
-    }
-
-    .btn-quit {
-        background-color: #ff4d4d;
-        color: #ffffff;
-        border: 2px solid #ff4d4d;
-        padding: 10px 15px;
-        font-size: 16px;
-        border-radius: 5px;
-        text-align: center;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .btn-quit:hover {
-        background-color: #d43f3f;
     }
 </style>

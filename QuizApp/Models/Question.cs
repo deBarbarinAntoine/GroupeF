@@ -1,4 +1,4 @@
-namespace QuizApp.Models
+namespace SimpleQuizApp.Models
 {
     public class Question
     {

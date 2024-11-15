@@ -1,11 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Ajout des services nécessaires, y compris le logging
-builder.Services.AddLogging();
+// Ajouter les services nécessaires pour les contrôleurs
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// Ajouter le gestionnaire d'exceptions et d'autres middlewares
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -19,6 +19,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Configurer le routage pour les contrôleurs
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Quiz}/{action=Start}/{id?}");

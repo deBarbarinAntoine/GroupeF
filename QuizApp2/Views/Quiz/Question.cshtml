@@ -1,0 +1,37 @@
+@model QuizApp.Controllers.Question
+
+<div class="text-center mt-5 quiz-container" >
+    <h2>@Model.Text</h2>
+    <form asp-action="SubmitAnswer" method="post">
+        @for (int i = 0; i < Model.Options.Length; i++)
+        {
+            <button type="submit" name="answerIndex" value="@i" class="btn btn-option mt-2 w-100">
+                @Model.Options[i]
+            </button>
+        }
+    </form>
+
+    <form asp-action="Quit" method="post">
+    <button type="submit" class="btn btn-danger mt-3 w-100">Quitter</button>
+</form>
+
+</div>
+
+<style>
+    .btn-option {
+        background-color: #ffffff;
+        color: #007bff;
+        border: 2px solid #007bff;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-align: center;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-option:hover {
+        background-color: #007bff;
+        color: #ffffff;
+    }
+</style>

@@ -1,0 +1,102 @@
+[
+    {
+        "Text": "En quelle année les États-Unis ont-ils accueilli la Coupe du Monde de la FIFA pour la première fois ?",
+        "Options": ["1986", "1994", "2002", "2010"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Quelle équipe a remporté la Coupe du Monde de la FIFA en 2018 ?",
+        "Options": ["Brésil", "Allemagne", "France", "Argentine"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quelle est la capitale de la France ?",
+        "Options": ["Paris", "Berlin", "Madrid", "Rome"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quelle est la plus petite planète de notre système solaire ?",
+        "Options": ["Terre", "Mars", "Mercure", "Vénus"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Qui a peint la Joconde ?",
+        "Options": ["Pablo Picasso", "Vincent van Gogh", "Léonard de Vinci", "Claude Monet"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quel est le symbole chimique de l'or ?",
+        "Options": ["Au", "Ag", "Gd", "Go"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quel pays est connu comme le Pays du Soleil Levant ?",
+        "Options": ["Chine", "Japon", "Corée", "Thaïlande"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Quel est le plus grand mammifère du monde ?",
+        "Options": ["Éléphant", "Baleine bleue", "Girafe", "Hippopotame"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Qui a écrit 'Roméo et Juliette' ?",
+        "Options": ["William Shakespeare", "Charles Dickens", "Mark Twain", "Jane Austen"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quelle est la capitale de l'Australie ?",
+        "Options": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Combien de continents y a-t-il sur Terre ?",
+        "Options": ["5", "6", "7", "8"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quel est le point de congélation de l'eau en Celsius ?",
+        "Options": ["0", "32", "-1", "100"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quelle est la langue la plus parlée dans le monde ?",
+        "Options": ["Anglais", "Espagnol", "Mandarin", "Hindi"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Qui a découvert la pénicilline ?",
+        "Options": ["Marie Curie", "Alexander Fleming", "Isaac Newton", "Albert Einstein"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Quelle est la plus haute montagne du monde ?",
+        "Options": ["K2", "Kangchenjunga", "Mont Everest", "Denali"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quel est le plus long fleuve du monde ?",
+        "Options": ["Amazon", "Nil", "Yangzi Jiang", "Mississippi"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quelle planète est connue sous le nom de Planète Rouge ?",
+        "Options": ["Mars", "Vénus", "Jupiter", "Saturne"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quelle est la substance naturelle la plus dure sur Terre ?",
+        "Options": ["Or", "Diamant", "Fer", "Platine"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Qui est connu comme le Père de l'ordinateur ?",
+        "Options": ["Charles Babbage", "Alan Turing", "John von Neumann", "Steve Jobs"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quel pays a offert la Statue de la Liberté aux États-Unis ?",
+        "Options": ["Royaume-Uni", "France", "Canada", "Allemagne"],
+        "CorrectAnswerIndex": 1
+    }
+]

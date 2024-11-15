@@ -1,14 +1,10 @@
-namespace QuizApp.Models
+namespace SimpleQuizApp.Models
 {
     public class QuizViewModel
     {
-        public Question Question { get; set; }
-        public string UserName { get; set; }
-
-        public QuizViewModel()
-        {
-            Question = new Question(); // Fournit une valeur par défaut pour éviter null.
-            UserName = string.Empty;   // Assure que le nom d'utilisateur est non-null.
-        }
+        public Question Question { get; set; } = new Question();
+        public int CurrentQuestionIndex { get; set; }
+        public int TotalQuestions { get; set; }
+        public int Score { get; set; }
     }
 }

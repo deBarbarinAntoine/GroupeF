@@ -1,8 +1,10 @@
-﻿@* Start.cshtml *@
+﻿@{
+    ViewData["Title"] = "Quiz - Start";
+}
+
 <div class="container text-center mt-5">
-    <h1>Bienvenue au Quiz</h1>
-    <form asp-action="Start" method="post">
-        <input type="text" name="userName" placeholder="Entrez votre nom" required class="form-control mb-3">
-        <button type="submit" class="btn btn-primary">Commencer</button>
+    <h1>Bienvenue au Quiz !</h1>
+    <form asp-action="StartQuiz" method="post">
+        <button class="btn btn-primary mt-3">Commencer</button>
     </form>
 </div>

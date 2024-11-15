@@ -1,59 +1,50 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using QuizApp.Models;
-using QuizApp.Services;
+using SimpleQuizApp.Models;
 
-namespace QuizApp.Controllers
+namespace SimpleQuizApp.Controllers
 {
     public class QuizController : Controller
     {
-        private readonly QuestionService _questionService;
-        private List<Question> _remainingQuestions;
+        private readonly List<Question> _questions;
 
         public QuizController()
         {
-            _questionService = new QuestionService();
-            _remainingQuestions = _questionService.GetAllQuestions();
+            // Charger les questions depuis un fichier JSON
+            var questionsJson = System.IO.File.ReadAllText("Data/questions.json");
+            _questions = JsonConvert.DeserializeObject<List<Question>>(questionsJson) ?? new List<Question>();
         }
 
         [HttpGet]
         public IActionResult Start()
         {
-            TempData.Clear(); // Réinitialiser TempData
+            TempData.Clear();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Start(string userName)
+        public IActionResult StartQuiz()
         {
-            TempData["UserName"] = userName;
             TempData["Score"] = 0;
-            TempData["RemainingQuestions"] = JsonConvert.SerializeObject(_remainingQuestions);
+            TempData["CurrentQuestionIndex"] = 0;
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            if (TempData["RemainingQuestions"] is string remainingQuestionsJson)
-            {
-                _remainingQuestions = JsonConvert.DeserializeObject<List<Question>>(remainingQuestionsJson) ?? new List<Question>();
-            }
+            var currentIndex = (int)(TempData["CurrentQuestionIndex"] ?? 0);
+            TempData.Keep();
 
-            if (_remainingQuestions == null || _remainingQuestions.Count == 0)
-            {
+            if (currentIndex >= _questions.Count)
                 return RedirectToAction("Result");
-            }
-
-            var question = _remainingQuestions[0]; // Prendre la première question
-            _remainingQuestions.RemoveAt(0); // Retirer la question actuelle
-            TempData["RemainingQuestions"] = JsonConvert.SerializeObject(_remainingQuestions);
-            TempData["CurrentQuestion"] = JsonConvert.SerializeObject(question);
 
             var model = new QuizViewModel
             {
-                Question = question,
-                UserName = TempData.Peek("UserName")?.ToString() ?? "Unknown"
+                Question = _questions[currentIndex],
+                CurrentQuestionIndex = currentIndex + 1,
+                TotalQuestions = _questions.Count,
+                Score = (int)(TempData["Score"] ?? 0)
             };
 
             return View(model);
@@ -62,54 +53,30 @@ namespace QuizApp.Controllers
         [HttpPost]
         public IActionResult SubmitAnswer(int answerIndex)
         {
-            if (TempData["CurrentQuestion"] is string questionJson && !string.IsNullOrEmpty(questionJson))
-            {
-                var question = JsonConvert.DeserializeObject<Question>(questionJson);
-                if (question != null)
-                {
-                    int score = (int)(TempData["Score"] ?? 0);
-                    if (answerIndex == question.CorrectAnswerIndex)
-                    {
-                        score++;
-                    }
+            var currentIndex = (int)(TempData["CurrentQuestionIndex"] ?? 0);
 
-                    TempData["Score"] = score;
-                    TempData["LastQuestion"] = JsonConvert.SerializeObject(question);
-                    TempData["LastAnswerIndex"] = answerIndex;
+            if (currentIndex < _questions.Count)
+            {
+                var question = _questions[currentIndex];
+
+                if (answerIndex == question.CorrectAnswerIndex)
+                {
+                    TempData["Score"] = (int)(TempData["Score"] ?? 0) + 1;
                 }
             }
 
+            TempData["CurrentQuestionIndex"] = currentIndex + 1;
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult Quit()
-        {
-            return RedirectToAction("Result");
         }
 
         [HttpGet]
         public IActionResult Result()
         {
-            TempData.Keep();
-
-            Question? lastQuestion = null;
-            if (TempData["LastQuestion"] != null && TempData["LastQuestion"] is string lastQuestionJson && !string.IsNullOrEmpty(lastQuestionJson))
+            var model = new QuizViewModel
             {
-                lastQuestion = JsonConvert.DeserializeObject<Question>(lastQuestionJson);
-            }
-
-            var lastAnswerIndex = (int?)TempData["LastAnswerIndex"];
-            var score = (int)(TempData["Score"] ?? 0);
-
-            var model = new ResultViewModel
-            {
-                UserName = TempData["UserName"]?.ToString() ?? "Unknown",
-                Score = score
+                Score = (int)(TempData["Score"] ?? 0),
+                TotalQuestions = _questions.Count
             };
-
-            ViewBag.LastQuestion = lastQuestion;
-            ViewBag.LastAnswerIndex = lastAnswerIndex;
 
             return View(model);
         }

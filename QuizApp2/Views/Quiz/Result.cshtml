@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Quiz Results";
+}
+
+<div class="text-center mt-5">
+    <h1>Quiz Completed!</h1>
+    <p>Your score is <strong>@ViewBag.Score</strong> out of <strong>@ViewBag.TotalQuestions</strong>.</p>
+    <form asp-action="Start" method="get">
+        <button type="submit" class="btn btn-primary">Retry</button>
+    </form>
+</div>
