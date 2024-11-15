@@ -1,0 +1,51 @@
+[
+    {
+        "Text": "Quelle est la capitale de la France ?",
+        "Options": ["Berlin", "Paris", "Madrid", "Rome"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Quelle est la couleur du ciel par temps clair ?",
+        "Options": ["Rouge", "Bleu", "Vert", "Jaune"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Quel animal est représenté sur cette image ?",
+        "ImageUrl": "https://th.bing.com/th/id/R.4f4362e6ec6e82e3133cae53495535e7?rik=wlkSGRZfvg%2ffBw&pid=ImgRaw&r=0",
+        "Options": ["Panda", "Koala", "Ours polaire", "Lémurien"],
+        "CorrectAnswerIndex": 1
+    },
+    {
+        "Text": "Qui a peint la Joconde ?",
+        "Options": ["Vincent van Gogh", "Claude Monet", "Leonard de Vinci", "Pablo Picasso"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quel est ce type de véhicule ?",
+        "ImageUrl": "https://th.bing.com/th/id/OIP.vmagHfgIczsTWNvEWcvGPAHaEo?rs=1&pid=ImgDetMain",
+        "Options": ["Tesla", "BMW", "Mercedes", "Audi"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quelle planète est surnommée la planète rouge ?",
+        "Options": ["Mars", "Jupiter", "Vénus", "Saturne"],
+        "CorrectAnswerIndex": 0
+    },
+    {
+        "Text": "Quel fruit est représenté sur cette image ?",
+        "ImageUrl": "https://th.bing.com/th/id/R.e7fc20730f27e3e0e7c202358d6725c1?rik=C3YiZ4kEpjG1EA&pid=ImgRaw&r=0",
+        "Options": ["Banane", "Pomme", "Poire", "Raisin"],
+        "CorrectAnswerIndex": 3
+    },
+    {
+        "Text": "Quelle est la langue officielle du Japon ?",
+        "Options": ["Mandarin", "Coréen", "Japonais", "Thaïlandais"],
+        "CorrectAnswerIndex": 2
+    },
+    {
+        "Text": "Quel est cet animal marin ?",
+        "ImageUrl": "https://th.bing.com/th/id/R.efc6c460bc0403e3f22ab4f92510d7aa?rik=2YGuIxkyA8Lcww&pid=ImgRaw&r=0",
+        "Options": ["Requin", "Dauphin", "Orque", "Phoque"],
+        "CorrectAnswerIndex": 1
+    }
+]
