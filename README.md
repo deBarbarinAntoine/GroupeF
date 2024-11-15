@@ -21,8 +21,7 @@ QuizApp2 est une application web simple développée en .NET Core permettant de 
 1. Depuis le dossier "QuizApp2", exécutez :
    ```bash
    dotnet watch run
-   ```
-il ouvrira la page web de maniere auto sinon ⬇️⬇️
+   ```il ouvrira la page web de maniere auto sinon ⬇️⬇️
 2. Ouvrez l'URL affichée dans la console, comme `https://localhost:7041`.
 
 ## Structure du projet
@@ -31,7 +30,7 @@ il ouvrira la page web de maniere auto sinon ⬇️⬇️
 - **Views** : Contient les fichiers d'interface utilisateur (`Start.cshtml`, `Question.cshtml`, `Result.cshtml`).
 - **wwwroot** : Contient les fichiers statiques, comme `Data/question.json`.
 
-## VOus souhaitez  Modifier les questions🤔 ?
+## Vous souhaitez  Modifier les questions🤔 ?
 1. Ouvrez `wwwroot/Data/question.json`.
 2. Ajoutez ou modifiez les questions. Exemple :
    ```json
