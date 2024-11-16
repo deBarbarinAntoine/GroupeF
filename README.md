@@ -49,5 +49,17 @@ QuizApp2 est une application web simple développée en .NET Core permettant de 
 
 Amusez-vous bien avec la Quiz App du 😁GROUPE FFFFFFFFFF!
 
+---
 
-## TIC TAC TOE
+## Projet Pages Jaunes (YellowDirectory)
+
+Antoine de Barbarin
+
+[See the README](YellowDirectory/README.md)
+
+## Projet Morpion (WebTicTacToe)
+
+Antoine de Barbarin
+
+[See the README](WebTicTacToe/README.md)
+
