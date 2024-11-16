@@ -1,67 +1,82 @@
 @model Game
 
 <div>
-    <h1>Play</h1>
     
     @if (TempData["Alert"] != null)
     {
         <div class="alert">@TempData["Alert"]</div>
     }
     <div>
-        <p>Player 1: @Model.Player1.Name / @Model.Player1.Symbol</p>
-        <p>Player 2: @Model.Player2.Name / @Model.Player2.Symbol</p>
-        <p>Mode: @Model.CurrentMode</p>
+        <h1 class="text-center mb-5">@Model.Player1.Name vs @Model.Player2.Name</h1>
     </div>
     
-    <div class="board">
+    <div class="board relative">
+        <div class="abs full pointer-event-none">
+            <img class="board-image" src="/img/tictactoe-board.png" alt="Tic Tac Toe Board Image">
+        </div>
         @for (int i = 0; i < Model.Board.Count; ++i)
         {
-            <div class="cell @(Model.Board.Grid[i].Equals(string.Empty) ? "active" : "")" data-index="@i"><span class="cell-ctn">@Model.Board.Grid[i]</span></div>
+            string symbolImage = Model.Board.Grid[i] switch
+            {
+                "X" => "/img/X-symbol.png",
+                "O" => "/img/O-symbol.png",
+                _ => string.Empty
+            };
+            <div class="cell @(Model.Board.Grid[i].Equals(string.Empty) && Model.IsPlaying() ? "active" : "")" data-index="@i">
+                @if (symbolImage != string.Empty)
+                {
+                    <img class="cell-ctn" src="@symbolImage" alt="symbol image @Model.Board.Grid[i]"/>
+                }
+            </div>
         }
     </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    
-        function humanClick(cells, cell) {
-            const index = parseInt(cell.dataset.index)
-            console.log(`Clicked on cell ${index}`);
-            axios.post("/Game/Play",
-                { index },
-                { headers: { 'Content-Type': 'application/json' } })
-                .then(response => {
-                    cells.forEach(cell => {
-                        cell.removeEventListener('click', () => humanClick(cells, cell));
-                    });
-                    document.querySelector(".board-container").innerHTML = response.data;
-                    location.reload();
-                })
-                .catch(error => {
-                        console.error(error);
-                    }
-                );
-        }
-    
-        const isHuman = @(Model.CurrentPlayer().IsHuman ? 1 : 0);
 
-        if (isHuman) {
-            const cells = document.querySelectorAll('.cell.active');
-            cells.forEach(cell => {
-                cell.addEventListener('click', () => humanClick(cells, cell));
-            });
-        } else {
-            setTimeout(function() {
-                axios.get("/Game/Play")
+@if (Model.IsPlaying())
+{
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function humanClick(cells, cell) {
+                const index = parseInt(cell.dataset.index)
+                console.log(`Clicked on cell ${index}`);
+                axios.post("/Game/Play",
+                    { index },
+                    { headers: { 'Content-Type': 'application/json' } })
                     .then(response => {
+                        cells.forEach(cell => {
+                            cell.removeEventListener('click', () => humanClick(cells, cell));
+                        });
                         document.querySelector(".board-container").innerHTML = response.data;
                         location.reload();
                     })
                     .catch(error => {
-                        console.error(error);
-                    }
-                );
-            }, 2000)
-        }
-    });
-</script>
+                            console.error(error);
+                        }
+                    );
+            }
+
+            const isHuman = @(Model.CurrentPlayer().IsHuman ? 1 : 0);
+
+            if (isHuman) {
+                const cells = document.querySelectorAll('.cell.active');
+                cells.forEach(cell => {
+                    cell.addEventListener('click', () => humanClick(cells, cell));
+                });
+            } else {
+                setTimeout(function() {
+                    axios.get("/Game/Play")
+                        .then(response => {
+                            document.querySelector(".board-container").innerHTML = response.data;
+                            location.reload();
+                        })
+                        .catch(error => {
+                                console.error(error);
+                            }
+                        );
+                }, 2000)
+            }
+        });
+    </script>
+}

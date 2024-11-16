@@ -6,8 +6,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession(options =>
 {
     options.Cookie.HttpOnly = true;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Adjust for production
-    options.Cookie.IsEssential = true; // Adjust for production
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.IsEssential = true;
 });
 
 var app = builder.Build();
@@ -24,7 +24,7 @@ else
     app.UseDeveloperExceptionPage();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();

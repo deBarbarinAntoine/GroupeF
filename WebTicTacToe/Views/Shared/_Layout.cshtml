@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - TicTacToe ASP.NET</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/WebTicTacToe.styles.css" asp-append-version="true"/>
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" class="ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" class="ico">
 </head>
 <body>
+
+<div class="abs-background tictactoe-bg"></div>
+
+
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
@@ -27,7 +31,7 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Play</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">New Game</a>
                     </li>
                 </ul>
             </div>

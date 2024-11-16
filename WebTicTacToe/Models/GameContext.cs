@@ -23,7 +23,7 @@ public class GameContext
     public GameContext(Game game)
     {
         // DEBUG
-        Console.WriteLine($"Board:\n{game.Board}");
+        // Console.WriteLine($"Board:\n{game.Board}");
         
         GameSerialized = JsonSerializer.Serialize(game);
         Empty = false;

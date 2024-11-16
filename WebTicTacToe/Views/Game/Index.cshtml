@@ -4,26 +4,30 @@
     Layout = "_Layout";
 }
 
-<form asp-action="Start" asp-controller="Game">
-    
-    <div asp-validation-summary="All" class="invalid-feedback"></div>
-    
-    <p>
-        <label asp-for="PlayerName1"></label>
-        <input asp-for="PlayerName1" class="form-control" placeholder="Name...">
-        <span asp-validation-for="PlayerName1"></span>
-    </p>
-    <p>
-        <label asp-for="PlayerName2"></label>
-        <input asp-for="PlayerName2" class="form-control" placeholder="Name...">
-        <span asp-validation-for="PlayerName2"></span>
-    </p>
-    <p>
-        <label asp-for="SelectedMode"></label>
-        <select asp-for="SelectedMode" asp-items="Html.GetEnumSelectList<Game.Mode>()"></select>
-        <span asp-validation-for="SelectedMode"></span>
-    </p>
-    <p>
-        <button type="submit">Play</button>
-    </p>
-</form>
+<div class="abs full display-flex justify-content-center align-items-center">
+    <form class="game-form huge-shadow" asp-action="Start" asp-controller="Game">
+
+        <h1 class="text-center mb-5">New Game</h1>
+
+        <div asp-validation-summary="All" class="form-alert invalid-feedback"></div>
+
+        <p>
+            <label class="d-none" asp-for="PlayerName1"></label>
+            <input asp-for="PlayerName1" class="form-control" placeholder="Player 1 Name...">
+            <span class="form-alert" asp-validation-for="PlayerName1"></span>
+        </p>
+        <p>
+            <label class="d-none" asp-for="PlayerName2"></label>
+            <input asp-for="PlayerName2" class="form-control" placeholder="Player 2 Name...">
+            <span class="form-alert" asp-validation-for="PlayerName2"></span>
+        </p>
+        <p>
+            <label asp-for="SelectedMode">Mode</label>
+            <select asp-for="SelectedMode" asp-items="Html.GetEnumSelectList<Game.Mode>()"></select>
+            @* <span class="form-alert" asp-validation-for="SelectedMode"></span> *@
+        </p>
+        <p>
+            <button class="button blue w-50 m-auto mt-5" type="submit">Play</button>
+        </p>
+    </form>
+</div>

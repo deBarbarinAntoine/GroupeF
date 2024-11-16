@@ -3,12 +3,12 @@
 @if (Model.GetState() == Game.State.Tie)
 {
     <div>
-        <h2>You tied!</h2>
+        <div class="endgame-msg tie">You tied!</div>
     </div>
 }
 else if (Model.GetState() == Game.State.Win)
 {
     <div>
-        <h2>@Model.PreviousPlayer().Name won!</h2>
+        <div class="endgame-msg win">@Model.PreviousPlayer().Name won!</div>
     </div>
 }

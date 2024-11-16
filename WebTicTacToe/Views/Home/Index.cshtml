@@ -3,9 +3,8 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about me: <a href="https://adebarbarin.com">Antoine de Barbarin</a>.</p>
+<div class="abs full text-center display-flex justify-content-center align-items-center">
+    <h1 class="d-none">TicTacToe Game</h1>
     
     @if (!Model.Empty)
     {
@@ -19,9 +18,22 @@
                 }
                 else
                 {
+                    @await Html.PartialAsync("_Board", game)
                     @await Html.PartialAsync("_EndGame", game)
                 }
+
+                <div class="game-actions">
+                    <form asp-controller="Game" asp-action="Clear"><button class="button red small-shadow" type="submit">Clear</button></form>
+                    <form asp-controller="Game" asp-action="Restart"><button class="button blue small-shadow" type="submit">Restart</button></form>
+                    <a asp-controller="Game" asp-action="Index" class="button blue small-shadow">New Game</a>
+                </div>
             </div>
         }
+    }
+    else
+    {
+        <div class="main-page-ctn abs full">
+            <a class="button big-btn blue huge-shadow" asp-controller="Game" asp-action="Index">Play TicTacToe</a>
+        </div>
     }
 </div>

@@ -1,0 +1,496 @@
+
+//############################################################################################
+//#                                    COLOR VARIABLES                                       #
+//############################################################################################
+
+$shadow: #15152020;
+$darkshadow: #15152050;
+
+$darkblue: #112D4E;
+$blue: #3F72AF;
+$mediumblue: #6096BA;
+$lightblue: #DBE2EF;
+
+$darkred: #C71F37;
+$red: #EF233C;
+
+$orange: #FBA834;
+$yellow: #FFDD32;
+
+$green: #63C132;
+$deepgreen: #3fA34D;
+
+$cream: #F7EFE6;
+$lightgrey: #F7F4F0;
+
+$white: #F9F7F7;
+
+//############################################################################################
+//#                                BASICS & COMMON ELEMENTS                                  #
+//############################################################################################
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: calc(10px + 0.4rem);
+}
+
+@media (max-width: 768px) {
+  * {
+    font-size: calc(11px + 0.4rem);
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem $shadow;
+}
+
+html {
+  position: relative;
+  min-height: 100dvh;
+  font-size: calc(7px + 0.4rem);
+}
+
+body {
+  background-color: $lightgrey;
+  font-size: 1.2rem;
+}
+
+footer {
+  margin-bottom: 60px;
+
+  .container {
+    font-size: 1.1rem;
+
+    a {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.container:has(main) {
+  position: relative;
+  min-height: 87dvh;
+}
+
+.container-space-between {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 3rem;
+}
+
+.abs-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.tictactoe-bg {
+  background-image: url('/img/tic-tac-toe-game-texture.jpg');
+  background-repeat: repeat;
+  filter: blur(1px);
+}
+
+.h-25rem {
+  height: 25rem;
+}
+
+.bg-hue-rotate {
+  filter: hue-rotate(330deg);
+}
+
+.bg-blue {
+  background-color: $mediumblue;
+}
+
+.bg-yellow {
+  background-color: $yellow;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.relative {
+  position: relative;
+}
+
+.abs {
+  position: absolute;
+}
+
+.hidden {
+  display: none;
+}
+
+.full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.small-shadow {
+  box-shadow: $shadow 0 .2rem 1.6rem;
+}
+
+.big-shadow {
+  box-shadow: $shadow 0 .5rem 2.2rem;
+}
+
+.huge-shadow {
+  box-shadow: $darkshadow 0 .5rem 2.2rem;
+}
+
+.border-radius {
+  border-radius: .7rem;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+}
+
+.nav-link {
+  font-size: 1.3rem;
+}
+
+.admin-nav-link {
+  width: 1.4rem;
+  aspect-ratio: 1;
+  cursor: pointer;
+
+  .icon {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+    fill: $darkblue;
+    transition: all 200ms ease-in 50ms;
+  }
+  &:hover .icon {
+    fill: $blue;
+  }
+  .stroke-icon {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+
+    path {
+      stroke: $darkblue;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+  &:hover .stroke-icon path{
+    stroke: $blue;
+  }
+}
+
+.h-separator {
+  width: 90%;
+  height: 2px;
+  border-radius: 1px;
+  background-color: transparentize($darkblue, 0.6);
+}
+
+.v-separator {
+  height: 90%;
+  width: 2px;
+  border-radius: 1px;
+  background-color: transparentize($darkblue, 0.6);
+}
+
+button,
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .5rem;
+  padding: 1rem 2rem;
+  appearance: none;
+  outline: none;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 200ms ease-in-out 50ms;
+  height: fit-content;
+  width: max-content;
+
+  &.blue {
+    background-color: $blue;
+    color: $white;
+    border: none;
+  }
+  &:hover:not(.disabled, &[disabled]) {
+    background-color: $mediumblue;
+    color: $darkblue;
+  }
+  &.green {
+    background-color: $green;
+    color: $darkblue;
+    border: none;
+
+    &:hover:not(.disabled, &[disabled]) {
+      background-color: $deepgreen;
+      color: $darkblue;
+    }
+  }
+  &.yellow {
+    background-color: $yellow;
+    color: $darkblue;
+    border: none;
+
+    &:hover:not(.disabled, &[disabled]) {
+      background-color: $orange;
+      color: $darkblue;
+    }
+  }
+  &.white {
+    border: 2px solid $blue;
+    background-color: $white;
+    color: $blue;
+
+    &:hover:not(.disabled, &[disabled]) {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+  &.red {
+    background-color: $red;
+    color: $white;
+    border: none;
+
+    &:hover:not(.disabled, &[disabled]) {
+      background-color: $darkred;
+      color: $white;
+    }
+  }
+  &.disabled, &[disabled] {
+    background-color: $lightblue;
+    color: $darkblue;
+    border: 2px solid $blue;
+    cursor: not-allowed;
+  }
+  &.big-btn {
+    border-radius: .7rem;
+    padding: 2.2rem 4.4rem;
+    font-size: 2.2rem;
+  }
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  gap: .5ch;
+  align-self: center;
+  padding: 1.5rem 3rem;
+  border: $orange 2px solid;
+  border-radius: .5rem;
+  background-color: $cream;
+  color: $darkblue;
+  font-size: 1.35rem;
+
+  span {
+    font-size: 1.35rem;
+    color: $darkblue;
+  }
+}
+.form-alert {
+  font-size: 1.35rem;
+  font-weight: bold;
+  color: $red;
+}
+
+input:not([type=checkbox]):not([type=radio]),
+.search-input {
+  flex: 1;
+  appearance: none;
+  border: $mediumblue 2px solid;
+  background-color: $white;
+  outline: none;
+  color: $darkblue;
+  font-weight: 600;
+  font-size: 1.2rem;
+  min-height: 3.5rem;
+  height: 100%;
+  border-radius: .5rem;
+  padding: 0 2rem;
+
+  &:focus{
+    outline: none;
+    appearance: none;
+    border: $orange 2px solid;
+    background-color: $white;
+  }
+}
+main {
+  height: 100%;
+}
+.pointer-event-none {
+  pointer-events: none;
+}
+
+//############################################################################################
+//#                                        HOME PAGE                                         #
+//############################################################################################
+
+.main-page-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//############################################################################################
+//#                                     PRIVACY POLICY                                       #
+//############################################################################################
+
+.policy-ctn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 3rem 0 12rem 0;
+  padding: 4rem;
+  background-color: $white;
+  border-radius: .7rem;
+  font-size: 1.3rem;
+
+  .date {
+    text-align: right;
+    font-style: italic;
+    font-size: 1.3rem;
+    padding-bottom: 3rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+  h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 1.45rem;
+    font-weight: bold;
+  }
+  p, a, li {
+    font-size: 1.3rem;
+  }
+}
+
+//############################################################################################
+//#                                   GAME INITIALIZATION                                    #
+//############################################################################################
+
+.game-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: max(300px, 70%);
+  min-height: 50dvh;
+  margin: 0 auto;
+  padding: 5rem 9rem;
+  border: 1px solid $darkblue;
+  border-radius: .7rem;
+  background-color: $white;
+  gap: 1.5rem;
+
+  p:has(select) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  select, select option, label {
+    color: $darkblue;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  select {
+    flex: 0.95;
+    padding: .5rem 1.5rem;
+    border: 2px solid $blue;
+    border-radius: .5rem;
+    background-color: $white;
+    outline: none;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+}
+
+//############################################################################################
+//#                                       GAME BOARD                                         #
+//############################################################################################
+
+
+.board-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  padding: 7rem;
+  border: 1px solid $darkblue;
+  border-radius: .7rem;
+  background-color: $white;
+
+  .board {
+    width: clamp(200px, 40vmin, 800px);
+    height: clamp(200px, 40vmin, 800px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0;
+
+    .board-image {
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+    .cell {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &.active {
+        cursor: pointer;
+      }
+      .cell-ctn {
+        object-fit: contain;
+        object-position: center;
+        width: 70%;
+        height: 70%;
+      }
+    }
+  }
+  .endgame-msg {
+    font-size: 3rem;
+    font-weight: bold;
+    &.win {
+      color: $deepgreen;
+    }
+    &.tie {
+      color: $blue;
+    }
+  }
+  .game-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
