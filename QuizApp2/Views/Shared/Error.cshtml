@@ -1,0 +1,12 @@
+﻿@model QuizApp2.Models.ErrorViewModel
+
+<div class="text-center mt-5">
+    <h1 class="display-4">Une erreur est survenue</h1>
+    <p class="lead">Nous sommes désolés pour la gêne occasionnée. Essayez de revenir plus tard.</p>
+    @if (Model.ShowRequestId)
+    {
+        <p>
+            <strong>Identifiant de la demande :</strong> @Model.RequestId
+        </p>
+    }
+</div>

@@ -1,0 +1,9 @@
+@{
+    ViewData["Title"] = "Résultat";
+}
+
+<div class="text-center mt-5">
+    <h1>Quiz Terminé !</h1>
+    <p>Votre score est @ViewBag.Score sur @ViewBag.TotalQuestions.</p>
+    <a asp-action="Start" class="btn btn-primary">Rejouer</a>
+</div>

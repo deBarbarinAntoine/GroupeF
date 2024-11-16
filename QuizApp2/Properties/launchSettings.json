@@ -4,16 +4,25 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:23469",
-      "sslPort": 44316
+      "applicationUrl": "http://localhost:64014",
+      "sslPort": 44315
     }
   },
   "profiles": {
-    "QuizApp": {
+    "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7041;http://localhost:5275",
+      "applicationUrl": "http://localhost:5204",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7176;http://localhost:5204",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
