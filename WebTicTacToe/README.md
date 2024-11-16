@@ -1,5 +1,7 @@
 # WebTicTacToe
 
+Antoine de Barbarin
+
 ---
 
 ## Index
