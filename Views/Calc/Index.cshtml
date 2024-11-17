@@ -1,0 +1,39 @@
+@model Calculatrice.Models.Calc
+
+@{
+ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculatrice</title>
+</head>
+<body>
+<h2>Calculatrice</h2>
+
+<div class="row">
+    @using (Html.BeginForm("Index", "Calc", FormMethod.Post))
+    {
+    <div class="form-group">
+        <label for="NumOne">Nombre 1 :</label>
+        <input type="text" class="form-control" id="numone" name="NumOne" value="@Model.NumOne" />
+    </div>
+
+    <div class="form-group">
+        <label for="NumTwo">Nombre 2 :</label>
+        <input type="text" class="form-control" id="numtwo" name="NumTwo" value="@Model.NumTwo" />
+    </div>
+
+    <div class="form-group">
+        <label for="Total">Résultat :</label>
+        <input type="text" class="form-control" id="total" name="Total" value="@Model.Total" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-info" id="add" value="add" name="calculate">+</button>
+    <button type="submit" class="btn btn-info" id="minus" value="minus" name="calculate">-</button>
+    <button type="submit" class="btn btn-info" id="substract" value="substract" name="calculate">/</button>
+    <button type="submit" class="btn btn-info" id="multiply" value="multiply" name="calculate">*</button>
+    }
+</div>
+</body>
+</html>
