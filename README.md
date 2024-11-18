@@ -70,16 +70,9 @@ Romain
 
 [See the README](AppMeteo/README.md)
 
-## Projet Application Météo (AppMeteo)
-
-Romain
 
 ## Projet Calculatrice (Calculatrice)
 
 Morgane
-
-## Projet Application Météo (AppMeteo)
-
-Romain
 
 [See the README](Calculatrice/README.md)
